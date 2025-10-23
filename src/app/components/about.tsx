@@ -1,5 +1,4 @@
 import Image from "next/image"
-import { Card } from "@/components/ui/card"
 
 export function About() {
   return (
@@ -19,7 +18,7 @@ export function About() {
               cloud infrastructure, cybersecurity, AI integration, and custom software development.
               <br />
               <br />
-              With over a decade of experience, we've helped hundreds of companies navigate digital transformation,
+              With over a decade of experience, we have helped hundreds of companies navigate digital transformation,
               optimize their operations, and achieve measurable growth. Our approach combines cutting-edge technology
               with deep industry knowledge to deliver solutions that drive real business value.
             </p>
