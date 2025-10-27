@@ -7,26 +7,28 @@ export const SecoundNavbar = () => {
   return (
     <div className="">
       {" "}
-      <header className="sticky top-0 z-50 w-full px-6 py-4 flex items-center justify-between bg-background/50 backdrop-blur supports-[backdrop-filter]:bg-background/50 border-b border-border/40">
-        <Button
-          variant="default"
-          size="sm"
-          className="gap-2 bg-cyan-500 hover:bg-cyan-600 rounded-3xl py-4"
-        >
-          <Phone className="h-4 w-4" />
-          Contact us
-        </Button>
-
-        <div className="flex items-center gap-8">
-          <Image src={"/logo-dark.png"} alt="Logo" width={200} height={200} />{" "}
+      <header className="relative px-6 sm:px-18  top-0 z-50 w-full py-4 flex items-center justify-center bg-background/50 backdrop-blur supports-[backdrop-filter]:bg-background/50 border-b border-border/40">
+        <div className="absolute left-6 sm:left-18">
+          <Button
+            variant="default"
+            size="sm"
+            className="gap-2 bg-cyan-500 hover:bg-cyan-600 rounded-3xl py-4"
+          >
+            <Phone className="h-4 w-4" />
+            Contact us
+          </Button>
         </div>
 
-        <nav className="hidden md:flex items-center gap-6">
+        <div>
+          <Image src="/logo-dark.png" alt="Logo" width={200} height={200} />
+        </div>
+
+        <nav className="absolute right-6 sm:right-18 hidden md:flex items-center gap-6">
           <a
             href="#home"
             className="text-sm font-medium text-foreground hover:text-cyan-500 transition-colors"
           >
-            Home
+             Home 
           </a>
           <a
             href="#about"
@@ -54,6 +56,6 @@ export const SecoundNavbar = () => {
           </a>
         </nav>
       </header>
-    </div>
-  );
+    </div>
+  );
 };

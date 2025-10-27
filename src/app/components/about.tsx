@@ -6,7 +6,7 @@ export function About() {
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
-            <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-cyan-500 via-teal-400 to-yellow-400 bg-clip-text text-transparent">
+            <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-cyan-500  to-yellow-400 bg-clip-text text-transparent">
               Who are we?
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
@@ -24,7 +24,7 @@ export function About() {
             </p>
             <div className="grid grid-cols-2 gap-6 pt-6 ">
               <div className="">
-                <div className="text-7xl font-bold relative mb-4">
+                <div className="lg:text-7xl text-5xl font-bold relative mb-4">
                   <span
                     className="bg-gradient-to-r from-cyan-500 via-teal-400 to-yellow-400 bg-clip-text text-transparent"
                     style={{
@@ -72,7 +72,7 @@ export function About() {
                 <div className="text-lg text-[#222222] mt-2">Satisfied Clients</div>
               </div>
               <div className="">
-                <div className="text-7xl font-bold relative mb-4">
+                <div className="lg:text-7xl text-5xl font-bold relative mb-4">
                   <span
                     className="bg-gradient-to-r from-cyan-500 via-teal-400 to-yellow-400 bg-clip-text text-transparent"
                     style={{

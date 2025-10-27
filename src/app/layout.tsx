@@ -7,7 +7,7 @@ const poppins = Poppins({
 });
 
 export const metadata = {
-  title: "Landing Page",
+  title:"SIRGAD - IT Partner",
   description: "Modern IT Landing Page",
 };
 
