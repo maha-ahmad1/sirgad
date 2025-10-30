@@ -7,6 +7,7 @@ import { NetworkBackground } from "./components/network-background"
 import CoreSolutionsCarousel from "./components/CoreSolutions";
 import SuccessStories from "./components/success-stories";
 import TrustedPartnerships from "./components/trusted-partnerships";
+import PartnersSection from "./components/PartnersSection";
 export default function Home() {
   return (
     <main className="relative min-h-screen">
@@ -18,7 +19,7 @@ export default function Home() {
       <TrustedPartnerships />
       {/* <Testimonials /> */}
       <SuccessStories />
-      {/* <Partners />  */}
+      <PartnersSection /> 
     </main>
   )
 }

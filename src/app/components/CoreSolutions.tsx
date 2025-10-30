@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import Image from "next/image";
 
 const services = [
   {
@@ -66,10 +67,9 @@ export default function CoreSolutionsCarousel() {
 
   return (
     <section className="grid lg:grid-cols-[40%_60%] min-h-[800px] overflow-visible">
-      {/* Left Side */}
       <div className="relative bg-gray-900 flex items-center justify-center p-8 lg:p-16 overflow-hidden z-0">
         <div
-           className="absolute inset-0 bg-cover bg-center opacity-40"
+          className="absolute inset-0 bg-cover bg-center opacity-40"
           style={{ backgroundImage: "url('/team.png')" }}
         />
         <div className="relative z-10 max-w-lg">
@@ -83,33 +83,33 @@ export default function CoreSolutionsCarousel() {
       </div>
 
       {/* Right Side */}
-      <div className="relative bg-gradient-to-br from-[#005E9F] to-[#1ECCFF] flex flex-col items-center justify-center p-8 lg:p-16  overflow-visible">
+      <div className="relative bg-gradient-to-l from-[#005E9F] to-[#1ECCFF] flex flex-col items-center justify-center p-8 lg:p-16  overflow-visible">
         {/* Decorative Dots */}
-        <div className="absolute top-8 right-8 grid grid-cols-5 gap-2">
-          {Array.from({ length: 15 }).map((_, i) => (
-            <div key={i} className="w-1.5 h-1.5 bg-white/40 rounded-full" />
-          ))}
+        <div className="absolute top-20 right-0 grid grid-cols-3 gap-2">
+          <Image src="/dots.png" alt="dot image" width={120} height={150} />
         </div>
 
         {/* Cards */}
-        <div className="w-full max-w-5xl relative">
-          <div className="grid md:grid-cols-3 gap-6 mb-8">
+        <div className="w-full max-w-5xl relative  ">
+          <div className="grid md:grid-cols-3 gap-6 pb-20 pt-20 lg:-ml-60 relative z-20 ">
             {getVisibleServices().map((service, index) => (
               <Card
                 key={service.id}
-                className={`overflow-hidden shadow-lg hover:shadow-xl transition-shadow ${
-                  index === 0 ? "lg:-ml-32 relative z-20" : ""
+                className={`overflow-hidden shadow-lg hover:shadow-xl transition-shadow rounded-[18px] ${
+                  index === 0 ? "" : ""
                 }`}
               >
-                <CardContent className="px-4">
-                  <div className="aspect-video bg-gray-100 overflow-hidden rounded-[18px]">
-                    <img
+                <CardContent className="px-4 ">
+                  <div className=" bg-gray-100 overflow-hidden rounded-[18px]">
+                    <Image
                       src={service.image || "/placeholder.svg"}
                       alt={service.title}
-                      className="w-full h-full object-cover"
+                      className="w-full h-60"
+                      width={1000}
+                      height={1000}
                     />
                   </div>
-                  <div className="p-6">
+                  <div className="pt-6 h-40">
                     <h3 className="text-xl font-bold mb-2 text-gray-900">
                       {service.title}
                     </h3>
@@ -123,32 +123,33 @@ export default function CoreSolutionsCarousel() {
           </div>
 
           {/* Controls */}
-          <div className="flex items-center justify-center gap-6">
-            <div className="flex items-center gap-3">
-              {Array.from({ length: totalSlides }).map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => goToSlide(index)}
-                  className={`text-lg font-semibold transition-all ${
-                    currentSlide === index
-                      ? "text-white text-2xl"
-                      : "text-white/60 hover:text-white/80"
-                  }`}
-                >
-                  {index + 1}
-                </button>
-              ))}
-            </div>
+          <div className="flex items-center justify-between gap-6 ">
+            <div className="flex items-center justify-center gap-6">
+              <div className="flex items-center gap-3">
+                {Array.from({ length: totalSlides }).map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => goToSlide(index)}
+                    className={` font-semibold transition-all ${
+                      currentSlide === index
+                        ? "text-white text-3xl"
+                        : "text-white/60 hover:text-white/80 text-xl"
+                    }`}
+                  >
+                    {index + 1}
+                  </button>
+                ))}
+              </div>
 
-            <div className="hidden md:block w-32 h-0.5 bg-white/30 rounded-full overflow-hidden">
-              <div
-                className="h-full bg-white transition-all duration-300"
-                style={{
-                  width: `${((currentSlide + 1) / totalSlides) * 100}%`,
-                }}
-              />
+              <div className="hidden md:block w-60 h-1 bg-white/30 rounded-full overflow-hidden">
+                <div
+                  className="h-full bg-white transition-all duration-300"
+                  style={{
+                    width: `${((currentSlide + 1) / totalSlides) * 100}%`,
+                  }}
+                />
+              </div>
             </div>
-
             <div className="flex gap-2">
               <Button
                 variant="ghost"
