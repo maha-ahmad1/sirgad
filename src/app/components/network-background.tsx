@@ -90,7 +90,8 @@ export function NetworkBackground() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed -z-10 opacity-90"
+      className="absolute -z-10 opacity-90"
+
       style={{
         top: "20%",
         right: "-15%",

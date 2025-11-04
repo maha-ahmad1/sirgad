@@ -4,10 +4,15 @@ import { HexagonalPattern } from "./HexagonalPattern";
 import { DotGrid } from "./dot-grid";
 import { FirstNavbar } from "./FirstNavbar";
 import { SecoundNavbar } from "./SecoundNavbar";
+import { NetworkBackground } from "./network-background"
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col">
+    <section className="relative min-h-screen flex flex-col overflow-hidden">
+      {/* <NetworkBackground /> */}
+      <div className="absolute inset-0 -z-10">
+        <NetworkBackground />
+      </div>
       <HexagonalPattern />
       <DotGrid />
       <FirstNavbar />

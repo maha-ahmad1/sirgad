@@ -47,7 +47,7 @@ export function Services() {
                         x="0"
                         y="80"
                         fill={`url(#fadeGradient${service.number})`}
-                        fontSize="80"
+                        fontSize="100"
                         fontWeight="bold"
                         fontFamily="system-ui, -apple-system, sans-serif"
                       >

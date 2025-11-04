@@ -138,3 +138,23 @@
     background-attachment: fixed;
   }
 }
+
+
+.animated-gradient-rotate {
+  /* background: conic-gradient(
+    #00AEEF,
+    #FEB71B,
+    #CBBA64,
+    #00AEEF
+  ); */
+  animation: rotateGradient 6s linear infinite;
+}
+
+@keyframes rotateGradient {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
