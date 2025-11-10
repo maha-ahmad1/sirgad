@@ -11,13 +11,17 @@ export default function Card() {
         alt="Partner background"
         fill
         priority
-        className="object-cover rounded-4xl" 
+        className="object-cover rounded-4xl"
+        quality={100}
+        sizes="100vw"
+        
       />
+      <div className="absolute inset-0 bg-[#00000033]/20  z-10" />
 
       {/* الكارد */}
       <div className="absolute inset-0 flex justify-end items-center">
         <Image
-        src="/card2.png"
+          src="/card2.png"
           alt="Sirgad card"
           width={900}
           height={400}

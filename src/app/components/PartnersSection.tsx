@@ -4,14 +4,14 @@ import { useState } from "react";
 import SuccessStories from "./success-stories";
 import Card from "./Card";
 import Image from "next/image";
-
-
+import PartnerForm from "./PartnerForm";
+import Footer from "./Footer";
 
 const partners = [
   { name: "Partner 1", logo: "/partners/partners1.png", position: 0 },
   { name: "Partner 2", logo: "/partners/partners2.png", position: 1 },
   { name: "Partner 3", logo: "/partners/partners3.png", position: 2 },
-  { name: "Partner 4", logo: "/partners/partners4.png", position: 3 },
+  // { name: "Partner 4", logo: "/partners/partners4.png", position: 3 },
   { name: "Partner 5", logo: "/partners/partners5.png", position: 4 },
   { name: "Partner 6", logo: "/partners/partners6.png", position: 5 },
 ];
@@ -20,7 +20,7 @@ export default function PartnersSection() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <section className="relative py-20 lg:py-32 ">
+    <section className="relative ">
       {/* Gradient Background */}
       <div
         className="absolute inset-0"
@@ -38,7 +38,7 @@ export default function PartnersSection() {
         }}
       />
 
-      <section>
+      <section className=" py-20 lg:py-32">
         <SuccessStories />
       </section>
 
@@ -308,6 +308,8 @@ export default function PartnersSection() {
       </section>
       <section>
         <Card />
+        <PartnerForm />
+        <Footer/>
       </section>
     </section>
   );
