@@ -66,7 +66,7 @@ export default function SuccessStories() {
   );
 
   return (
-    <section className="py-20 -mt-120 relative z-10">
+    <section className="py-20 -mt-30 md:-mt-60 lg:-mt-120 relative z-10">
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-12">
