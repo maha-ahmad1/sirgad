@@ -7,8 +7,6 @@ const poppins = Poppins({
   weight: ["400", "600", "700"],
 });
 
-
-
 export const metadata = {
   title: "SIRGAD - IT Partner",
   description: "Modern IT Landing Page",
@@ -25,7 +23,7 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>
       <body
-        className={`${poppins.className} ${workSans.variable} max-w-[1920px] mx-auto text-base antialiased text-neutral-900 overflow-x-hidden`}
+        className={`${poppins.className} ${workSans.variable} max-w-[1920px] mx-auto w-full overflow-x-hidden text-base antialiased text-neutral-900`}
       >
         {children}
       </body>

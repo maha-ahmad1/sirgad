@@ -35,7 +35,7 @@ const testimonials = [
     text: "SIRGAD consistently goes above and beyond. Their innovative approach helped us scale efficiently.",
     name: "Omar Khaled",
     date: "20 Jan 2025",
-    image: "/image4.png",
+    image: "/image3.png",
     rating: 5,
   },
 ];
@@ -55,17 +55,17 @@ export default function TrustedPartnerships() {
   const goToSlide = (index: number) => setCurrentIndex(index);
 
   return (
-    <section className=" pt-12 md:pt-20 lg:pt-60 relative bg-white min-h-screen md:min-h-[800px] lg:min-h-[1000px] overflow-hidden">
+    <section className=" pt-12 md:pt-20 lg:pt-60 relative  bg-white min-h-screen md:min-h-[800px] lg:min-h-[1000px] ">
       <div
-        className="absolute inset-0 bg-cover bg-center"
+        className="absolute inset-0 bg-cover bg-center z-0"
         style={{ backgroundImage: "url('/Group.png')" }}
       />
 
       <div className="container relative px-4 md:px-6 lg:px-20 flex flex-col lg:flex-row items-center gap-8 md:gap-12 lg:gap-0 mx-auto max-w-8xl ">
         <div className="relative z-10 w-full lg:w-[60%] lg:pr-20 pb-8 md:pb-12 lg:pb-20 text-center lg:text-left">
-          <h2 className="font-work-sans font-extrabold text-2xl md:text-3xl lg:text-5xl   mb-3 md:mb-4">
+          <h2 className="dark:text-white font-work-sans font-extrabold text-2xl md:text-3xl lg:text-5xl   mb-3 md:mb-4">
             Trusted <span className="text-[#00A8E8]">Partner</span>
-            <span className="text-[#030303]">ships</span>
+            <span className="dark:text-white text-[#030303]">ships</span>
           </h2>
           <p className=" font-work-sans font-medium text-sm md:text-base text-gray-500 leading-relaxed">
             Hear directly from the businesses we have transformed. SIRGAD has
@@ -74,7 +74,7 @@ export default function TrustedPartnerships() {
           </p>
         </div>
 
-        <div className="relative w-full lg:w-auto overflow-hidden">
+        <div className="relative w-full lg:w-auto overflow-x-hidden overflow-y-visible">
           {/* Cards Wrapper */}
           <div
             className="flex transition-transform duration-500 ease-out"
@@ -89,11 +89,11 @@ export default function TrustedPartnerships() {
               >
                 <div className="bg-[#D6F2FB] rounded-2xl p-6  h-full relative border-2 border-transparent">
                   {/* أيقونة الاقتباس */}
-                  <div className="absolute top-0 right-6 translate-y-[-50%] w-12 h-12 rounded-full bg-[#00A8E8] flex items-center justify-center shadow-md z-10">
+                  <div className="absolute  right-6 -top-6 w-12 h-12 rounded-full bg-[#00A8E8] flex items-center justify-center shadow-md z-20">
                     <Quote className="w-6 h-6 text-white fill-white" />
                   </div>
 
-                  <p className="font-work-sans font-medium  text-xl md:text-base text-[#222222] mb-4 md:mb-6 leading-relaxed pr-10">
+                  <p className="dark:text-white font-work-sans font-medium  text-xl md:text-base text-[#222222] mb-4 md:mb-6 leading-relaxed pr-10">
                     {t.text}
                   </p>
 
@@ -110,10 +110,10 @@ export default function TrustedPartnerships() {
                     </div>
 
                     <div className="flex-1 min-w-0">
-                      <h4 className="font-work-sans font-normal md:text-lg text-gray-900 text-sm truncate">
+                      <h4 className="dark:text-white font-work-sans font-normal md:text-lg text-gray-900 text-sm truncate">
                         {t.name}
                       </h4>
-                      <p className="text-xs font-normal md:text-md text-[#222222CC] flex items-center gap-1">
+                      <p className="dark:text-white text-xs font-normal md:text-md text-[#222222CC] flex items-center gap-1">
                         📅 {t.date}
                       </p>
                     </div>
@@ -142,7 +142,7 @@ export default function TrustedPartnerships() {
                     onClick={() => goToSlide(index)}
                     className={`font-semibold transition-all ${
                       currentIndex === index
-                        ? "text-gray-900 text-xl md:text-3xl"
+                        ? "dark:text-white text-gray-900 text-xl md:text-3xl"
                         : "text-gray-400 hover:text-gray-600 text-lg"
                     }`}
                   >
@@ -163,7 +163,7 @@ export default function TrustedPartnerships() {
             </div>
 
             {/* Arrow Buttons */}
-            <div className="flex gap-2">
+            <div className="flex gap-2 justify-center md:justify-end relative z-20 mt-6">
               <Button
                 variant="ghost"
                 size="icon"

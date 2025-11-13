@@ -38,9 +38,13 @@
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
 
-  --gradient-start: #feb71b1a;
-  --gradient-mid: #c2e9fb;
-  --gradient-end: #feb71b1a;
+  --gradient-start: #feb71b1a; 
+  --gradient-mid: rgba(0, 174, 239, 0.38);  
+  --gradient-end: #feb71b29;  
+
+   --gradient-start-pos: 20%;
+  --gradient-mid-pos: 45%;
+  --gradient-end-pos: 90%;
 }
 
 .dark {
@@ -77,10 +81,18 @@
   --sidebar-border: oklch(0.269 0 0);
   --sidebar-ring: oklch(0.439 0 0);
 
+ 
   --gradient-start: #feb71b1a;
-  --gradient-mid: #01060c;
-  --gradient-end: #feb71b1a;
+  --gradient-mid: #00aeef33; /* أزرق أخف قليلاً في الليل */
+  --gradient-end: #feb71b29;
+
+  --gradient-start-pos: 15%;
+  --gradient-mid-pos: 50%;
+  --gradient-end-pos: 95%;
+
 }
+
+
 
 @theme inline {
   --color-background: var(--background);
@@ -125,7 +137,7 @@
   * {
     @apply border-border outline-ring/50;
   }
-  body {
+  /* body {
     @apply bg-background text-foreground transition-colors duration-500;
     position: relative;
     overflow-x: hidden;
@@ -137,18 +149,36 @@
     );
     background-attachment: fixed;
     text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+  } */
+body {
+  @apply bg-background text-foreground transition-colors duration-500;
+  position: relative;
+  overflow-x: hidden;
+
+  background: linear-gradient(
+    135deg,
+    var(--gradient-start) var(--gradient-start-pos),
+    var(--gradient-mid) var(--gradient-mid-pos),
+    var(--gradient-end) var(--gradient-end-pos)
+  );
+  background-attachment: fixed;
+  text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
+}
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    font-size: 100%; /* 16px base */
   }
 }
 
+.font-work-sans {
+  font-family: var(--font-work-sans);
+}
 
 .animated-gradient-rotate {
-  /* background: conic-gradient(
-    #00AEEF,
-    #FEB71B,
-    #CBBA64,
-    #00AEEF
-  ); */
   animation: rotateGradient 6s linear infinite;
 }
 
@@ -160,41 +190,106 @@
     transform: rotate(360deg);
   }
 }
-html {
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-}
-
-
-.font-work-sans {
-  font-family: var(--font-work-sans);
-}
-
 
 @layer utilities {
-  @media (min-width:1024px) and (max-width:1280px) {
-    .right-1024px {
-      right: 10;
-      bottom: 2rem;
-      /* padding:12 8 12 8 ; */
-    }
-    .footer-1024px {
-      right: 14;
-      /* bottom: 2rem; */
-      /* padding:12 8 12 8 ; */
-    }
-     .text-1024px {
-       font-size: 26px;
-         
+  .container-1920 {
+    max-width: min(1720px, 100%);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: clamp(1rem, 8vw, 10rem);
+    padding-right: clamp(1rem, 8vw, 10rem);
+    
+  }
+
+  .responsive-padding {
+    padding-left: max(1rem, 4vw);
+    padding-right: max(1rem, 4vw);
+  }
+
+  /* Typography scaling */
+  .text-responsive-xl {
+    font-size: clamp(1.5rem, 4vw, 3rem);
+  }
+
+  .text-responsive-2xl {
+    font-size: clamp(1.75rem, 5vw, 3.5rem);
+  }
+
+  .text-responsive-3xl {
+    font-size: clamp(2rem, 6vw, 4rem);
+  }
+  .text-responsive-4xl {
+    font-size: clamp(2.5rem, 7vw, 5rem);
+  }
+ .text-responsive-6xl {
+  font-size: clamp(2.5rem, 7vw, 3.75rem);
+}
+
+
+  /* Layout helpers */
+  .responsive-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  }
+
+  .aspect-ratio-preserve {
+    aspect-ratio: 16/9;
+  }
+
+  /* Zoom adaptations */
+  @media (min-width: 1536px) and (max-width: 1920px) {
+    html {
+      font-size: 95%;
     }
   }
- @media (min-width:768px) and (max-width:1023px) {
-    .right-1024px {
-      right: 18;
-      bottom: 2rem;
-      padding:12 8 12 8 ;
+
+  @media (min-width: 1921px) {
+    html {
+      font-size: 90%;
     }
-   
   }
-  
+
+  @media (max-width: 768px) {
+    html {
+      font-size: 87.5%; /* 14px base */
+    }
+  }
+
+  @media (max-width: 480px) {
+    html {
+      font-size: 85%; /* 13.6px base */
+    }
+  }
+}
+
+@media (min-width: 1920px) {
+  .text-responsive-lg {
+    font-size: 1.25rem !important;
+  }
+
+  .text-responsive-xl {
+    font-size: 2rem !important;
+  }
+
+  .text-responsive-hero {
+    font-size: 6rem !important;
+  }
+}
+
+
+@media (max-width: 1270px) {
+  .nav-links {
+    display: none !important;
+  }
+  .menu-button {
+    display: flex !important;
+  }
+}
+
+@media (min-width: 1271px) {
+  .nav-links {
+    display: flex !important;
+  }
+  .menu-button {
+    display: none !important;
+  }
 }

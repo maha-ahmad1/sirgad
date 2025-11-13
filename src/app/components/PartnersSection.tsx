@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import SuccessStories from "./success-stories"
-import Card from "./Card"
-import Image from "next/image"
-import PartnerForm from "./PartnerForm"
-import Footer from "./Footer"
+import { useState } from "react";
+import SuccessStories from "./success-stories";
+import Card from "./Card";
+import Image from "next/image";
+import PartnerForm from "./PartnerForm";
+import Footer from "./Footer";
 
 const partners = [
   { name: "Partner 1", logo: "/partners/partners1.png", position: 0 },
@@ -13,15 +13,15 @@ const partners = [
   { name: "Partner 3", logo: "/partners/partners3.png", position: 2 },
   { name: "Partner 5", logo: "/partners/partners5.png", position: 4 },
   { name: "Partner 6", logo: "/partners/partners6.png", position: 5 },
-]
+];
 
 export default function PartnersSection() {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
-  const radii = [90, 150, 210, 270]
+  const radii = [70, 130, 190, 250];
 
   return (
-    <section className="relative">
+    <section className="relative w-full ">
       {/* Gradient Background */}
       <div
         className="absolute inset-0"
@@ -36,163 +36,308 @@ export default function PartnersSection() {
         }}
       />
 
-      <section className="py-20 lg:py-32">
-        <SuccessStories />
+      {/* Success Stories Section */}
+      <section className="py-12 sm:py-16 lg:py-24 w-full">
+        <div className="max-w-[1920px] mx-auto w-full ">
+          <div className="px-4 sm:px-6 lg:px-8">
+            <SuccessStories />
+          </div>
+        </div>
       </section>
 
-      <section className="container mx-auto px-10">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `url("/world.png")`,
-            backgroundSize: "100%",
-            backgroundPosition: "center 450px",
-            backgroundRepeat: "no-repeat",
-          }}
-        />
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left Column */}
-            <div className="relative">
-              <div className="absolute -left-2 top-28 -translate-y-1/2 pointer-events-none overflow-hidden">
-                <h2
-                  className="font-extrabold text-[8rem] lg:text-[10rem] text-transparent select-none whitespace-nowrap leading-none"
-                  style={{
-                    WebkitTextStroke: "1px #000000",
-                    WebkitMaskImage: "linear-gradient(to top, transparent 20%, black 100%)",
-                    maskImage: "linear-gradient(to top, transparent 30%, black 100%)",
-                  }}
-                >
-                  Partners
-                </h2>
-              </div>
+      {/* Main Partners Content */}
+      <section className="w-full ">
+        <div className="max-w-[1920px] mx-auto w-full container-1920 ">
+          <div className="px-4 sm:px-6 lg:px-8">
+            {/* World Map Background */}
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage: `url("/world.png")`,
+                backgroundSize: "clamp(100%, 1200px, 100%)",
+                backgroundPosition: "center clamp(300px, 40vw, 450px)",
+                backgroundRepeat: "no-repeat",
+              }}
+            />
 
-              <div className="relative z-10">
-                <p
-                  className="font-work-sans text-2xl md:text-4xl font-bold mb-20 tracking-wider
-                  bg-gradient-to-r from-[rgba(0,138,171,1)] to-[rgba(203,178,100,1)]
-                  bg-clip-text text-transparent uppercase"
-                >
-                  BACKED BY LEADING PARTNERS
-                </p>
-
-                <h2 className="w-[120%] font-work-sans text-3xl lg:text-4xl xl:text-6xl font-bold text-gray-900 leading-tight">
-                  We proudly collaborate with local and global organizations to empower{" "}
-                  <span className="inline-block mt-6">
-                    <span className="bg-[#008AAB] text-white px-4 py-2">the next generation of</span>
-                  </span>{" "}
-                  <span className="inline-block mt-10">
-                    <span className="bg-[#008AAB] text-white px-4 py-2">innovators</span>
-                  </span>
-                </h2>
-              </div>
-            </div>
-
-            {/* Right Column */}
-            <div className="relative w-full flex items-center justify-center">
-              <svg className="absolute w-[100%] h-auto pointer-events-none" viewBox="0 0 600 500">
-                <defs>
-                  <linearGradient id="fadeGradient1" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stopColor="#0EA5E9" stopOpacity="0.45" />
-                    <stop offset="100%" stopColor="#0EA5E9" stopOpacity="0.08" />
-                  </linearGradient>
-                  <linearGradient id="fadeGradient2" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stopColor="#06B6D4" stopOpacity="0.4" />
-                    <stop offset="100%" stopColor="#06B6D4" stopOpacity="0.06" />
-                  </linearGradient>
-                  <linearGradient id="fadeGradient3" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stopColor="#0EA5E9" stopOpacity="0.35" />
-                    <stop offset="100%" stopColor="#0EA5E9" stopOpacity="0.05" />
-                  </linearGradient>
-                  <linearGradient id="fadeGradient4" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stopColor="#06B6D4" stopOpacity="0.3" />
-                    <stop offset="100%" stopColor="#06B6D4" stopOpacity="0.04" />
-                  </linearGradient>
-
-                  <radialGradient id="bgInner" cx="50%" cy="50%" r="50%">
-                    <stop offset="0%" stopColor="#C7E0EA" stopOpacity="0" />
-                    <stop offset="100%" stopColor="#D6EBF5" stopOpacity="1" />
-                  </radialGradient>
-
-                  <radialGradient id="bgMiddle" cx="50%" cy="50%" r="50%">
-                    <stop offset="30%" stopColor="#E0EFF8" stopOpacity="0.5" />
-                    <stop offset="100%" stopColor="#E8F4FA" stopOpacity="0" />
-                  </radialGradient>
-
-                  <radialGradient id="bgOuter" cx="50%" cy="50%" r="50%">
-                    <stop offset="60%" stopColor="#EEF8FC" stopOpacity="0.3" />
-                    <stop offset="100%" stopColor="#F5FAFE" stopOpacity="0" />
-                  </radialGradient>
-
-                  <radialGradient id="bgOutermost" cx="50%" cy="50%" r="50%">
-                    <stop offset="70%" stopColor="#F5FAFE" stopOpacity="0.15" />
-                    <stop offset="100%" stopColor="#FAFCFD" stopOpacity="0" />
-                  </radialGradient>
-                </defs>
-
-                <circle cx="300" cy="250" r={90} fill="url(#bgInner)" />
-                <circle cx="300" cy="250" r={150} fill="url(#bgMiddle)" />
-                <circle cx="300" cy="250" r={210} fill="url(#bgOuter)" />
-                <circle cx="300" cy="250" r={270} fill="url(#bgOutermost)" />
-
-                {/* Arc paths */}
-                {radii.map((r, idx) => (
-                  <path
-                    key={idx}
-                    d={`M 300 250 m -${r},0 a ${r},${r} 0 1,1 ${r * 2},0`}
-                    fill="none"
-                    stroke={`url(#fadeGradient${idx + 1})`}
-                    strokeWidth="2"
-                    strokeDasharray="8,6"
-                    strokeLinecap="round"
-                  />
-                ))}
-              </svg>
-
-              <div className="absolute w-32 h-32 mt-6">
-                <Image alt="partners" src="/partners/partners5.png" width={400} height={400} />
-              </div>
-
-              {/* Orbiting Partner Logos */}
-              {partners.map((partner, index) => {
-                const angle = (index / partners.length) * 2 * Math.PI - Math.PI / 2
-                const radius = 220
-                const x = Math.cos(angle) * radius
-                const y = Math.sin(angle) * radius
-                const isHovered = hoveredIndex === index
-
-                return (
-                  <div
-                    key={index}
-                    className="absolute transition-all duration-300 ease-out z-20"
-                    style={{
-                      transform: `translate(${x}px, ${y}px) scale(${isHovered ? 1.1 : 1})`,
-                    }}
-                    onMouseEnter={() => setHoveredIndex(index)}
-                    onMouseLeave={() => setHoveredIndex(null)}
-                  >
-                    <div className="w-24 h-24 rounded-full p-[6px] shadow-xl transition-transform duration-500 flex items-center justify-center animated-gradient-rotate">
-                      <div className="w-full h-full rounded-full bg-white flex items-center justify-center">
-                        <img
-                          src={partner.logo || "/placeholder.svg"}
-                          alt={partner.name}
-                          className="w-14 h-14 object-contain"
-                        />
-                      </div>
-                    </div>
+            <div className="relative z-10">
+              <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+                {/* Left Column */}
+                <div className="relative">
+                  <div className="absolute -left-2 sm:-left-4 top-24 sm:top-28 -translate-y-1/2 pointer-events-none overflow-hidden">
+                    <h2
+                      className="font-extrabold text-[4rem] sm:text-[6rem] lg:text-[8rem] xl:text-[10rem] text-transparent select-none whitespace-nowrap leading-none"
+                      style={{
+                        WebkitTextStroke: "1px #000000",
+                        WebkitMaskImage:
+                          "linear-gradient(to top, transparent 20%, black 100%)",
+                        maskImage:
+                          "linear-gradient(to top, transparent 30%, black 100%)",
+                      }}
+                    >
+                      Partners
+                    </h2>
                   </div>
-                )
-              })}
+
+                  <div className="relative z-10 mt-8 sm:mt-0">
+                    <p className="font-work-sans text-2xl sm:text-3xl lg:text-responsive-4xl font-bold mb-12 sm:mb-16 lg:mb-20 tracking-wider uppercase">
+                      <span className="bg-gradient-to-r from-[rgba(0,138,171,1)] to-[rgba(203,178,100,1)] bg-clip-text text-transparent">
+                      BACKED By LEADING PARTNERS
+                      </span>
+                    </p>
+
+                    <h2 className="w-full  font-work-sans text-2xl sm:text-3xl lg:text-4xl xl:text-5xl 2xl:text-responsive-6xl font-bold text-gray-900 leading-tight">
+                      We proudly collaborate with local and global organizations
+                      to empower{" "}
+                     
+                    </h2>
+                    <h2 className="font-work-sans text-2xl sm:text-3xl lg:text-4xl xl:text-5xl 2xl:text-responsive-6xl font-bold">
+                       <span className="inline-block mt-4 sm:mt-6">
+                        <span className="bg-[#008AAB] text-white px-3 sm:px-4 py-1 sm:py-2 ">
+                          the next generation of
+                        </span>
+                      </span>{" "}
+                      <span className="inline-block mt-4 sm:mt-6 lg:mt-8">
+                        <span className="bg-[#008AAB] text-white px-3 sm:px-4 py-1 sm:py-2 ">
+                          innovators
+                        </span>
+                      </span>
+                    </h2>
+                  </div>
+                </div>
+
+                {/* Right Column */}
+                <div className="relative w-full flex items-center justify-center min-h-[400px] sm:min-h-[500px] lg:min-h-[600px]">
+                  <svg
+                    className="absolute w-full max-w-[500px] lg:max-w-[600px] h-auto pointer-events-none"
+                    viewBox="0 0 600 500"
+                    preserveAspectRatio="xMidYMid meet"
+                  >
+                    <defs>
+                      <linearGradient
+                        id="fadeGradient1"
+                        x1="0%"
+                        y1="0%"
+                        x2="0%"
+                        y2="100%"
+                      >
+                        <stop
+                          offset="0%"
+                          stopColor="#0EA5E9"
+                          stopOpacity="0.45"
+                        />
+                        <stop
+                          offset="100%"
+                          stopColor="#0EA5E9"
+                          stopOpacity="0.08"
+                        />
+                      </linearGradient>
+                      <linearGradient
+                        id="fadeGradient2"
+                        x1="0%"
+                        y1="0%"
+                        x2="0%"
+                        y2="100%"
+                      >
+                        <stop
+                          offset="0%"
+                          stopColor="#06B6D4"
+                          stopOpacity="0.4"
+                        />
+                        <stop
+                          offset="100%"
+                          stopColor="#06B6D4"
+                          stopOpacity="0.06"
+                        />
+                      </linearGradient>
+                      <linearGradient
+                        id="fadeGradient3"
+                        x1="0%"
+                        y1="0%"
+                        x2="0%"
+                        y2="100%"
+                      >
+                        <stop
+                          offset="0%"
+                          stopColor="#0EA5E9"
+                          stopOpacity="0.35"
+                        />
+                        <stop
+                          offset="100%"
+                          stopColor="#0EA5E9"
+                          stopOpacity="0.05"
+                        />
+                      </linearGradient>
+                      <linearGradient
+                        id="fadeGradient4"
+                        x1="0%"
+                        y1="0%"
+                        x2="0%"
+                        y2="100%"
+                      >
+                        <stop
+                          offset="0%"
+                          stopColor="#06B6D4"
+                          stopOpacity="0.3"
+                        />
+                        <stop
+                          offset="100%"
+                          stopColor="#06B6D4"
+                          stopOpacity="0.04"
+                        />
+                      </linearGradient>
+
+                      <radialGradient id="bgInner" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%" stopColor="#C7E0EA" stopOpacity="0" />
+                        <stop
+                          offset="100%"
+                          stopColor="#D6EBF5"
+                          stopOpacity="1"
+                        />
+                      </radialGradient>
+
+                      <radialGradient id="bgMiddle" cx="50%" cy="50%" r="50%">
+                        <stop
+                          offset="30%"
+                          stopColor="#E0EFF8"
+                          stopOpacity="0.5"
+                        />
+                        <stop
+                          offset="100%"
+                          stopColor="#E8F4FA"
+                          stopOpacity="0"
+                        />
+                      </radialGradient>
+
+                      <radialGradient id="bgOuter" cx="50%" cy="50%" r="50%">
+                        <stop
+                          offset="60%"
+                          stopColor="#EEF8FC"
+                          stopOpacity="0.3"
+                        />
+                        <stop
+                          offset="100%"
+                          stopColor="#F5FAFE"
+                          stopOpacity="0"
+                        />
+                      </radialGradient>
+
+                      <radialGradient
+                        id="bgOutermost"
+                        cx="50%"
+                        cy="50%"
+                        r="50%"
+                      >
+                        <stop
+                          offset="70%"
+                          stopColor="#F5FAFE"
+                          stopOpacity="0.15"
+                        />
+                        <stop
+                          offset="100%"
+                          stopColor="#FAFCFD"
+                          stopOpacity="0"
+                        />
+                      </radialGradient>
+                    </defs>
+
+                    <circle cx="300" cy="250" r={90} fill="url(#bgInner)" />
+                    <circle cx="300" cy="250" r={150} fill="url(#bgMiddle)" />
+                    <circle cx="300" cy="250" r={210} fill="url(#bgOuter)" />
+                    <circle
+                      cx="300"
+                      cy="250"
+                      r={270}
+                      fill="url(#bgOutermost)"
+                    />
+
+                    {/* Arc paths */}
+                    {radii.map((r, idx) => (
+                      <path
+                        key={idx}
+                        d={`M 300 250 m -${r},0 a ${r},${r} 0 1,1 ${r * 2},0`}
+                        fill="none"
+                        stroke={`url(#fadeGradient${idx + 1})`}
+                        strokeWidth="2"
+                        strokeDasharray="8,6"
+                        strokeLinecap="round"
+                      />
+                    ))}
+                  </svg>
+
+                  {/* Center Logo */}
+                  <div className="absolute w-20 h-20 sm:w-24 sm:h-24 lg:w-32 lg:h-32 mt-6">
+                    <Image
+                      alt="partners"
+                      src="/partners/partners5.png"
+                      width={400}
+                      height={400}
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+
+                  {/* Orbiting Partner Logos */}
+                  {partners.map((partner, index) => {
+                    const angle =
+                      (index / partners.length) * 2 * Math.PI - Math.PI / 2;
+                    const radius = clamp(160, 180, 220); // responsive radius
+                    const x = Math.cos(angle) * radius;
+                    const y = Math.sin(angle) * radius;
+                    const isHovered = hoveredIndex === index;
+
+                    return (
+                      <div
+                        key={index}
+                        className="absolute transition-all duration-300 ease-out z-20"
+                        style={{
+                          transform: `translate(${x}px, ${y}px) scale(${
+                            isHovered ? 1.1 : 1
+                          })`,
+                        }}
+                        onMouseEnter={() => setHoveredIndex(index)}
+                        onMouseLeave={() => setHoveredIndex(null)}
+                      >
+                        <div className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 rounded-full p-[4px] sm:p-[6px] shadow-xl transition-transform duration-500 flex items-center justify-center animated-gradient-rotate">
+                          <div className="w-full h-full rounded-full bg-white flex items-center justify-center">
+                            <Image
+                              src={partner.logo || "/placeholder.svg"}
+                              alt={partner.name}
+                              width={56}
+                              height={56}
+                              className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 object-contain"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section>
-        <Card />
-        <PartnerForm />
-        <Footer />
+      {/* Bottom Sections */}
+      <section className="w-full">
+        <div className="max-w-[1920px] mx-auto w-full">
+          <div className="px-4 sm:px-6 lg:px-8">
+            <Card />
+            <PartnerForm />
+            <Footer />
+          </div>
+        </div>
       </section>
     </section>
-  )
+  );
+}
+
+// Helper function for responsive values
+function clamp(min: number, mid: number, max: number): number {
+  if (typeof window === "undefined") return mid;
+
+  const width = window.innerWidth;
+  if (width < 768) return min;
+  if (width < 1024) return mid;
+  return max;
 }
