@@ -22,7 +22,7 @@ export function ThemeToggle() {
   }
 
   return (
-    <button onClick={toggleTheme} className="flex items-center gap-2 group" aria-label="Toggle theme">
+    <button onClick={toggleTheme} className=" cursor-pointer flex items-center gap-2 group" aria-label="Toggle theme">
       <div className="relative w-12 h-6 bg-white/30 rounded-full transition-colors">
         <div
           className={` font-work-sans font-medium absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full transition-transform ${

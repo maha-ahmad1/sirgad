@@ -5,11 +5,16 @@ import { Phone, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { ThemeToggle } from "./theme-toggle";
+import { useTranslations, useLocale } from "next-intl";
+import Link from "next/link";
 
 export const SecoundNavbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isDark, setIsDark] = useState(false); // ✅ لتتبع وضع الثيم
+  const [isDark, setIsDark] = useState(false); 
+
+  const t = useTranslations("navbar");
+  const locale = useLocale();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,10 +23,8 @@ export const SecoundNavbar = () => {
 
     window.addEventListener("scroll", handleScroll);
 
-    // ✅ فحص الثيم عند التحميل
     setIsDark(document.documentElement.classList.contains("dark"));
 
-    // ✅ تحديث الحالة عند تغيير الثيم
     const observer = new MutationObserver(() => {
       setIsDark(document.documentElement.classList.contains("dark"));
     });
@@ -39,14 +42,14 @@ export const SecoundNavbar = () => {
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
-  const navItems = [
-    { href: "#home", label: "Home" },
-    { href: "#about", label: "About" },
-    { href: "#services", label: "Services" },
-    { href: "#works", label: "Works" },
-    { href: "#testimonials", label: "Testimonials" },
-  ];
 
+  const navItems = [
+    { href: "#home", label: t("home") },
+    { href: "#about", label: t("about") },
+    { href: "#services", label: t("services") },
+    { href: "#solutions", label: t("works") },
+    { href: "#testimonials", label: t("testimonials") },
+  ];
   const logoSrc = isDark ? "/logo-light.png" : "/logo-dark.png";
 
   return (
@@ -70,14 +73,17 @@ export const SecoundNavbar = () => {
         <div className="max-w-[1920px] mx-auto w-full">
           <div className="flex items-center justify-between relative">
             <div className="absolute left-0 hidden md:block">
+             <Link href="#partner-form">
+
               <Button
                 variant="default"
                 size="sm"
                 className="cursor-pointer gap-2 bg-[#00AEEF] hover:bg-[#0096d1] rounded-4xl lg:py-5 font-work-sans text-sm font-normal text-white"
               >
                 <Phone className="h-4 w-4" />
-                Contact us
+                {t("contactUs")}
               </Button>
+              </Link>
             </div>
 
             <div className="flex-1 flex justify-center">
@@ -130,7 +136,7 @@ export const SecoundNavbar = () => {
           {/* Header */}
           <div className="flex items-center justify-between mb-8 pb-4 border-b border-gray-200 dark:border-gray-700">
             <Image
-              src={logoSrc} 
+              src={logoSrc}
               alt="Logo"
               width={120}
               height={45}
@@ -182,14 +188,16 @@ export const SecoundNavbar = () => {
               onClick={() => setIsMenuOpen(false)}
             >
               <Phone className="h-4 w-4" />
-              Contact Us
+              {t("contactUs")}
             </Button>
           </div>
         </div>
       </div>
 
       {/* Spacer for fixed navbar */}
-      <div className={`h-20 sm:h-24 lg:h-28 ${isScrolled ? "mt-0" : "mt-8"}`}></div>
+      <div
+        className={`h-20 sm:h-24 lg:h-28 ${isScrolled ? "mt-0" : "mt-8"}`}
+      ></div>
     </div>
   );
 };

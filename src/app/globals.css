@@ -1,5 +1,7 @@
-@import "tailwindcss";
-@import "tw-animate-css";
+
+
+@import 'tailwindcss';
+@import 'tw-animate-css';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -48,10 +50,10 @@
 }
 
 .dark {
-  --background1: #01060c;
+  --background: rgba(37, 37, 38, 1); 
   --foreground: oklch(0.95 0.01 240);
-  --card: oklch(0.15 0.02 240);
-  --card-foreground: oklch(0.95 0.01 240);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.15 0.01 240);
   --popover: oklch(0.15 0.02 240);
   --popover-foreground: oklch(0.95 0.01 240);
   --primary: oklch(0.95 0.01 240);
@@ -81,20 +83,19 @@
   --sidebar-border: oklch(0.269 0 0);
   --sidebar-ring: oklch(0.439 0 0);
 
- 
-  --gradient-start: #feb71b1a;
-  --gradient-mid: #00aeef33; /* أزرق أخف قليلاً في الليل */
-  --gradient-end: #feb71b29;
+  --gradient-start: #feb71b1a; 
+  --gradient-mid: rgba(0, 174, 239, 0.38);  
+  --gradient-end: #feb71b29;  
 
-  --gradient-start-pos: 15%;
+
+  --gradient-start-pos: 0%;
   --gradient-mid-pos: 50%;
-  --gradient-end-pos: 95%;
-
+  --gradient-end-pos: 100%;
 }
 
 
-
 @theme inline {
+  --font-tajawal: 'Tajawal', sans-serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -137,45 +138,48 @@
   * {
     @apply border-border outline-ring/50;
   }
-  /* body {
+  
+  body {
     @apply bg-background text-foreground transition-colors duration-500;
     position: relative;
     overflow-x: hidden;
+
     background: linear-gradient(
       135deg,
-      var(--gradient-start) 0%,
-      var(--gradient-mid) 45%,
-      var(--gradient-end) 100%
+      var(--gradient-start) var(--gradient-start-pos),
+      var(--gradient-mid) var(--gradient-mid-pos),
+      var(--gradient-end) var(--gradient-end-pos)
     );
     background-attachment: fixed;
     text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
-  } */
-body {
-  @apply bg-background text-foreground transition-colors duration-500;
-  position: relative;
-  overflow-x: hidden;
+  }
 
-  background: linear-gradient(
-    135deg,
-    var(--gradient-start) var(--gradient-start-pos),
-    var(--gradient-mid) var(--gradient-mid-pos),
-    var(--gradient-end) var(--gradient-end-pos)
-  );
-  background-attachment: fixed;
-  text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-}
+  .dark body {
+    background: 
+      linear-gradient(
+        135deg,
+      var(--gradient-start) var(--gradient-start-pos),
+      var(--gradient-mid) var(--gradient-mid-pos),
+      var(--gradient-end) var(--gradient-end-pos)
+      ),
+      rgba(37, 37, 38, 1);
+  }
 
   html {
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
-    font-size: 100%; /* 16px base */
+    font-size: 100%;
   }
 }
 
 .font-work-sans {
   font-family: var(--font-work-sans);
+}
+
+/* Added Tajawal font class */
+.font-tajawal {
+  font-family: var(--font-tajawal);
 }
 
 .animated-gradient-rotate {
@@ -198,7 +202,6 @@ body {
     margin-right: auto;
     padding-left: clamp(1rem, 8vw, 10rem);
     padding-right: clamp(1rem, 8vw, 10rem);
-    
   }
 
   .responsive-padding {
@@ -206,7 +209,6 @@ body {
     padding-right: max(1rem, 4vw);
   }
 
-  /* Typography scaling */
   .text-responsive-xl {
     font-size: clamp(1.5rem, 4vw, 3rem);
   }
@@ -218,15 +220,15 @@ body {
   .text-responsive-3xl {
     font-size: clamp(2rem, 6vw, 4rem);
   }
+  
   .text-responsive-4xl {
     font-size: clamp(2.5rem, 7vw, 5rem);
   }
+  
  .text-responsive-6xl {
   font-size: clamp(2.5rem, 7vw, 3.75rem);
 }
 
-
-  /* Layout helpers */
   .responsive-grid {
     grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
   }
@@ -235,7 +237,6 @@ body {
     aspect-ratio: 16/9;
   }
 
-  /* Zoom adaptations */
   @media (min-width: 1536px) and (max-width: 1920px) {
     html {
       font-size: 95%;
@@ -250,13 +251,13 @@ body {
 
   @media (max-width: 768px) {
     html {
-      font-size: 87.5%; /* 14px base */
+      font-size: 87.5%;
     }
   }
 
   @media (max-width: 480px) {
     html {
-      font-size: 85%; /* 13.6px base */
+      font-size: 85%;
     }
   }
 }
@@ -275,7 +276,6 @@ body {
   }
 }
 
-
 @media (max-width: 1270px) {
   .nav-links {
     display: none !important;
@@ -293,3 +293,74 @@ body {
     display: none !important;
   }
 }
+
+
+/* Network Background Containment */
+/* #tsparticles-hero {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: -1 !important;
+} */
+
+/* Ensure the hero section contains the particles */
+/* section.relative.min-h-screen {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate; 
+} */
+
+/* Force particles to be contained within hero section */
+.absolute.inset-0.-z-10.overflow-hidden {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  overflow: hidden !important;
+  z-index: -1 !important;
+}
+
+/* Hide particles canvas from other sections */
+main > *:not(:first-child) canvas {
+  display: none !important;
+}
+
+/* Alternative strong containment */
+.hero-section-container {
+  position: relative;
+  overflow: hidden;
+  
+}
+
+/* Robust background containment helper used by hero component */
+.hero-background-absolute {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  overflow: hidden !important;
+  z-index: -1 !important;
+}
+
+
+
+/* .hero {
+  min-height: 100svh;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-block: clamp(3rem, 8vh, 7rem);
+}
+.hero-image {
+  max-height: 50vh;
+  object-fit: cover;
+  width: 100%;
+  border-radius: 24px;
+}
+
+ */

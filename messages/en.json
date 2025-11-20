@@ -1,0 +1,147 @@
+{
+  "navbar": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "works": "Works",
+    "testimonials": "Testimonials",
+    "contactUs": "Contact us"
+  },
+    "firstnavbar": {
+    "text-center":"Specialized in bringing your ideas to life – request your service today"
+  },
+  "hero": {
+    "title": "Your Trusted IT Partner",
+    "description": "We deliver tailored IT solutions by staying ahead with the latest tech, ensuring efficiency and value for your investments—because your success is our priority.",
+    "startJourney": "Start Your Journey",
+    "exploreSolutions": "Explore Solutions"
+  },
+   "About": {
+    "title": "Who are we?",
+    "subtitle": "Visionaries crafting digital futures since 2013",
+    "description1": "We are a team of passionate technologists, designers, and strategists dedicated to transforming businesses through innovative IT solutions. Our expertise spans cloud infrastructure, cybersecurity, AI integration, and custom software development.",
+    "description2": "With over a decade of experience, we have helped hundreds of companies navigate digital transformation, optimize their operations, and achieve measurable growth. Our approach combines cutting-edge technology with deep industry knowledge to deliver solutions that drive real business value.",
+    "clients": "Satisfied Clients",
+    "years": "Years Innovating",
+    "imageAlt": "Our Team"
+  },
+  "services": {
+    "strategy": "Strategy",
+    "strategyDescription": "We deliver strategic IT leadership and ultra-efficient operations to ensure your business stays ahead of the curve.",
+    "solutions": "Solutions",
+    "solutionsDescription": "We deliver innovative, high-value IT solutions with integrity, guiding businesses through transformative journeys for superior results.",
+    "staff": "Staff", 
+    "staffDescription": "Our team comprises tech-savvy professionals dedicated to delivering innovative, tailored solutions that drive your business forward.",
+    "quality": "Quality",
+    "qualityDescription": "By tracking the latest IT innovations, we craft tailored solutions to resolve your business challenges with confidence and proven expertise."
+  },
+
+  
+  "coreSolutions": {
+    "title": "Core Solutions",
+    "subtitle": "Comprehensive Digital Services to Your ambitions",
+    "webDevelopment": "Web Development",
+    "webDevelopmentDescription": "Fast, secure websites built for your business with modern frameworks and mobile-first design.",
+    "mobileApp": "Mobile App Development", 
+    "mobileAppDescription": "Fast, secure websites built for your business with modern frameworks and mobile-first design.",
+    "customSoftware": "Custom Software",
+    "customSoftwareDescription": "Fast, secure websites built for your business with modern frameworks and mobile-first design.",
+    "cloudSolutions": "Cloud Solutions",
+    "cloudSolutionsDescription": "Scalable cloud infrastructure and services to power your digital transformation.",
+    "uiUxDesign": "UI/UX Design",
+    "uiUxDesignDescription": "Beautiful, intuitive interfaces designed to delight users and drive engagement.",
+    "digitalMarketing": "Digital Marketing",
+    "digitalMarketingDescription": "Data-driven marketing strategies to grow your brand and reach your target audience."
+  },
+  "partners": {
+    "backedBy": "BACKED BY LEADING PARTNERS",
+    "title1": "We proudly collaborate with local and global organizations to empower",
+    "title2": "the next generation of",
+    "title3": "innovators",
+    "partners":"Partners"
+
+  },
+
+  
+  "TrustedPartnerships": {
+    "title": "Partnerships", 
+    "trusted": "Trusted",
+    "partner": "Partner",
+    "description": "Hear directly from the businesses we have transformed. SIRGAD has demonstrated their professionalism and fulfilled all obligations according to foreseen.",
+    "testimonials": [
+      {
+        "id": 1,
+        "text": "SIRGAD has demonstrated their professionalism and fulfilled all obligations according to foreseen.",
+        "name": "Shams Samir Hassan",
+        "date": "03 Jan 2025",
+        "image": "/image1.png",
+        "rating": 5
+      },
+      {
+        "id": 2,
+        "text": "Working with SIRGAD transformed our business operations. Their expertise and dedication exceeded our expectations.",
+        "name": "Ahmed Mohammed",
+        "date": "10 Jan 2025",
+        "image": "/image2.png",
+        "rating": 5
+      },
+      {
+        "id": 3,
+        "text": "The team at SIRGAD delivered exceptional results. Professional, timely, and highly skilled in their craft.",
+        "name": "Fatima Ali",
+        "date": "15 Jan 2025",
+        "image": "/image3.png",
+        "rating": 5
+      },
+      {
+        "id": 4,
+        "text": "SIRGAD consistently goes above and beyond. Their innovative approach helped us scale efficiently.",
+        "name": "Omar Khaled",
+        "date": "20 Jan 2025",
+        "image": "/image3.png",
+        "rating": 5
+      }
+    ]
+  },
+  "footer": {
+    "newsletter": "Newsletter",
+    "newsletterDescription": "Subscribe to our newsletter for the latest updates.",
+    "emailPlaceholder": "Your Email",
+    "send": "Send",
+    "description": "Innovative technology solutions for a digital world. Transforming businesses through cutting-edge technology and expert consulting.",
+    "contactUs": "Contact us",
+    "address": "Imm2, Rue Dayet Aoua, Agdal, Rabat-Morocco",
+    "email": "info@sirgad.com",
+    "phone": "+212 535 943 297",
+    "rights": "© SIRGAD 2025. All rights reserved.",
+    "heroFooter": "Driving business growth ",
+    "hero": "with innovative digital solutions"
+  },
+ 
+  "PartnerForm": {
+    "title_part1": "Partner",
+    "title_part2": "with Sirgad",
+
+    "left_text": "For Mentors, for investors, for institutions. Let's build a future powered by youth innovation",
+
+    "first_name": "First Name",
+    "first_name_placeholder": "First name",
+
+    "last_name": "Last Name",
+    "last_name_placeholder": "Last name",
+
+    "email": "Email",
+    "email_placeholder": "Email",
+
+    "subject": "Subject",
+    "subject_placeholder": "Subject",
+
+    "phone": "Phone Number",
+    "phone_placeholder": "Phone Number",
+
+    "message": "Message",
+    "message_placeholder": "Type your message here...",
+
+    "send_message": "Send Message"
+  }
+}

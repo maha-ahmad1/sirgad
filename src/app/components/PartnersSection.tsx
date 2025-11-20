@@ -6,6 +6,7 @@ import Card from "./Card";
 import Image from "next/image";
 import PartnerForm from "./PartnerForm";
 import Footer from "./Footer";
+import { useLocale, useTranslations } from "next-intl";
 
 const partners = [
   { name: "Partner 1", logo: "/partners/partners1.png", position: 0 },
@@ -16,23 +17,39 @@ const partners = [
 ];
 
 export default function PartnersSection() {
+  const locale = useLocale();
+  const isRTL = locale === "ar";
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-
+  const t = useTranslations("partners");
   const radii = [70, 130, 190, 250];
 
   return (
     <section className="relative w-full ">
       {/* Gradient Background */}
       <div
-        className="absolute inset-0"
+        className="absolute inset-0 dark:hidden"
         style={{
           backgroundImage: `
-            linear-gradient(to top, rgba(255,255,255,0) 60%, white 100%),
-            linear-gradient(to top, rgba(254,183,27,0.1), transparent 60%),
-            linear-gradient(to left, rgba(254,89,89,0.1), transparent 60%),
-            linear-gradient(to right, rgba(0,138,171,0.15), transparent 60%)
-          `,
+      linear-gradient(to top, rgba(255,255,255,0) 60%, white 100%),
+      linear-gradient(to top, rgba(254,183,27,0.1), transparent 60%),
+      linear-gradient(to left, rgba(254,89,89,0.1), transparent 60%),
+      linear-gradient(to right, rgba(0,138,171,0.15), transparent 60%)
+    `,
           backgroundBlendMode: "screen",
+        }}
+      />
+
+      {/* للتدرج في الدارك مود - مع تدرج خفيف من نفس اللون */}
+      <div
+        className="absolute inset-0 hidden dark:block"
+        style={{
+          backgroundImage: `
+      linear-gradient(to top, rgba(37,37,38,0) 60%, rgba(37,37,38,1) 100%),
+      linear-gradient(to top, rgba(37,37,38,0.9), rgba(37,37,38,1) 60%),
+      linear-gradient(to left, rgba(254,89,89,0.1), transparent 60%),
+      linear-gradient(to right, rgba(0,138,171,0.15), transparent 60%)
+    `,
+          backgroundBlendMode: "normal",
         }}
       />
 
@@ -64,42 +81,52 @@ export default function PartnersSection() {
               <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                 {/* Left Column */}
                 <div className="relative">
-                  <div className="absolute -left-2 sm:-left-4 top-24 sm:top-28 -translate-y-1/2 pointer-events-none overflow-hidden">
+                  <div
+                    className={`absolute  top-24 sm:top-28 -translate-y-1/2 pointer-events-none overflow-hidden ${
+                      isRTL ? "-right-2 sm:-right-4 " : "-left-2 sm:-left-4 "
+                    }`}
+                  >
                     <h2
-                      className="font-extrabold text-[4rem] sm:text-[6rem] lg:text-[8rem] xl:text-[10rem] text-transparent select-none whitespace-nowrap leading-none"
+                      className={`font-extrabold text-[4rem] sm:text-[6rem] lg:text-[8rem] xl:text-[10rem] text-transparent select-none whitespace-nowrap leading-none `}
                       style={{
-                        WebkitTextStroke: "1px #000000",
+                        WebkitTextStroke:
+                          typeof window !== "undefined" &&
+                          document.documentElement.classList.contains("dark")
+                            ? "1px #FFFFFFB2"
+                            : "1px #000000",
                         WebkitMaskImage:
                           "linear-gradient(to top, transparent 20%, black 100%)",
                         maskImage:
                           "linear-gradient(to top, transparent 30%, black 100%)",
                       }}
                     >
-                      Partners
+                      {t("partners")}
                     </h2>
                   </div>
 
                   <div className="relative z-10 mt-8 sm:mt-0">
                     <p className="font-work-sans text-2xl sm:text-3xl lg:text-responsive-4xl font-bold mb-12 sm:mb-16 lg:mb-20 tracking-wider uppercase">
                       <span className="bg-gradient-to-r from-[rgba(0,138,171,1)] to-[rgba(203,178,100,1)] bg-clip-text text-transparent">
-                      BACKED By LEADING PARTNERS
+                        {/* BACKED By LEADING PARTNERS */}
+                        {t("backedBy")}
                       </span>
                     </p>
 
-                    <h2 className="w-full  font-work-sans text-2xl sm:text-3xl lg:text-4xl xl:text-5xl 2xl:text-responsive-6xl font-bold text-gray-900 leading-tight">
-                      We proudly collaborate with local and global organizations
-                      to empower{" "}
-                     
+                    <h2 className="w-full dark:text-white font-work-sans text-2xl sm:text-3xl lg:text-4xl xl:text-5xl 2xl:text-responsive-6xl font-bold text-gray-900 leading-tight">
+                      {/* We proudly collaborate with local and global organizations
+                      to empower{" "} */}
+                      {t("title1")}
                     </h2>
                     <h2 className="font-work-sans text-2xl sm:text-3xl lg:text-4xl xl:text-5xl 2xl:text-responsive-6xl font-bold">
-                       <span className="inline-block mt-4 sm:mt-6">
+                      <span className="inline-block mt-4 sm:mt-6">
                         <span className="bg-[#008AAB] text-white px-3 sm:px-4 py-1 sm:py-2 ">
-                          the next generation of
+                          {/* the next generation of */}
+                          {t("title2")}
                         </span>
                       </span>{" "}
                       <span className="inline-block mt-4 sm:mt-6 lg:mt-8">
                         <span className="bg-[#008AAB] text-white px-3 sm:px-4 py-1 sm:py-2 ">
-                          innovators
+                          {t("title3")}
                         </span>
                       </span>
                     </h2>
@@ -294,8 +321,8 @@ export default function PartnersSection() {
                             isHovered ? 1.1 : 1
                           })`,
                         }}
-                        onMouseEnter={() => setHoveredIndex(index)}
-                        onMouseLeave={() => setHoveredIndex(null)}
+                        // onMouseEnter={() => setHoveredIndex(index)}
+                        // onMouseLeave={() => setHoveredIndex(null)}
                       >
                         <div className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 rounded-full p-[4px] sm:p-[6px] shadow-xl transition-transform duration-500 flex items-center justify-center animated-gradient-rotate">
                           <div className="w-full h-full rounded-full bg-white flex items-center justify-center">
@@ -321,7 +348,7 @@ export default function PartnersSection() {
       {/* Bottom Sections */}
       <section className="w-full">
         <div className="max-w-[1920px] mx-auto w-full">
-          <div className="px-4 sm:px-6 lg:px-8">
+          <div className="">
             <Card />
             <PartnerForm />
             <Footer />

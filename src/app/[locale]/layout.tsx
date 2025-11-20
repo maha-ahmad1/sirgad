@@ -61,7 +61,7 @@ import type { Metadata } from 'next'
 import { Geist, Geist_Mono, Tajawal } from 'next/font/google'
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getLocale } from 'next-intl/server';
-import './globals.css'
+import '../globals.css'
 
 const geist = Geist({ subsets: ["latin"] });
 const geistMono = Geist_Mono({ subsets: ["latin"] });

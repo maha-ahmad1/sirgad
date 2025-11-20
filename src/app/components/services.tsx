@@ -1,63 +1,88 @@
+import { useTranslations, useLocale } from "next-intl";
 
 const services = [
   {
     number: "01",
-    title: "Strategy",
-    description:
-      "We deliver strategic IT leadership and ultra-efficient operations to ensure your business stays ahead of the curve.",
+    titleKey: "strategy",
+    descriptionKey: "strategyDescription"
   },
   {
-    number: "02",
-    title: "Solutions",
-    description:
-      "We deliver innovative, high-value IT solutions with integrity, guiding businesses through transformative journeys for superior results.",
+    number: "02", 
+    titleKey: "solutions",
+    descriptionKey: "solutionsDescription"
   },
   {
     number: "03",
-    title: "Staff",
-    description:
-      "Our team comprises tech-savvy professionals dedicated to delivering innovative, tailored solutions that drive your business forward.",
+    titleKey: "staff", 
+    descriptionKey: "staffDescription"
   },
   {
     number: "04",
-    title: "Quality",
-    description:
-      "By tracking the latest IT innovations, we craft tailored solutions to resolve your business challenges with confidence and proven expertise.",
+    titleKey: "quality",
+    descriptionKey: "qualityDescription"
   },
 ]
 
 export function Services() {
+  const t = useTranslations("services");
+  const locale = useLocale();
+  const isRTL = locale === 'ar';
+
   return (
     <section id="services" className="relative py-20 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((service) => {
             return (
-              <div key={service.title} className="border-cyan-500/20 hover:border-cyan-500/40 transition-colors">
-                  <div className="relative h-26">
-                    <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="xMinYMin meet">
-                      <defs>
-                        <linearGradient id={`fadeGradient${service.number}`} x1="0%" y1="95%" x2="0%" y2="0%">
-                          <stop offset="0%" stopColor="#ffff" stopOpacity="-4" />
-                          <stop offset="50%" stopColor="#06b6d4" stopOpacity="0.6" />
-                          {/* <stop offset="100%" stopColor="#facc15" stopOpacity="1" /> */}
-                        </linearGradient>
-                      </defs>
-                      <text
-                        x="0"
-                        y="80"
-                        fill={`url(#fadeGradient${service.number})`}
-                        fontSize="100"
-                        fontWeight="bold"
-                        fontFamily="system-ui, -apple-system, sans-serif"
+              <div key={service.titleKey} className="border-cyan-500/20 hover:border-cyan-500/40 transition-colors">
+                <div className="relative h-26">
+                  <svg 
+                    className="w-full h-full" 
+                    viewBox="0 0 100 100" 
+                    preserveAspectRatio="xMinYMin meet"
+                    style={{ direction: 'ltr' }} // الحفاظ على اتجاه الأرقام LTR دائمًا
+                  >
+                    <defs>
+                      <linearGradient 
+                        id={`fadeGradient${service.number}`} 
+                        x1="0%" 
+                        y1="95%" 
+                        x2="0%" 
+                        y2="0%"
                       >
-                        {service.number}
-                      </text>
-                    </svg>
-                  </div>
-                  <h1 className="text-xl mb-4 font-bold ">{service.title}</h1>
+                        <stop offset="0%" stopColor="#ffff" stopOpacity="-4" />
+                        <stop offset="50%" stopColor="#06b6d4" stopOpacity="0.6" />
+                      </linearGradient>
+                    </defs>
+                    <text
+                      x={isRTL ? "120" : "0"} // تعديل الموضع حسب الاتجاه
+                      y="80"
+                      fill={`url(#fadeGradient${service.number})`}
+                      fontSize="100"
+                      fontWeight="bold"
+                      fontFamily="system-ui, -apple-system, sans-serif"
+                      textAnchor={isRTL ? "end" : "start"} // محاذاة النص
+                      direction="ltr" // إجبار الاتجاه LTR للأرقام
+                    >
+                      {service.number}
+                    </text>
+                  </svg>
+                </div>
+                <h1 
+                  className={`text-xl mb-4 font-bold font-work-sans dark:text-[#FFFFFF] ${
+                    isRTL ? 'text-right' : 'text-left'
+                  }`}
+                >
+                  {t(service.titleKey)}
+                </h1>
                 <div>
-                  <p className="text-sm leading-relaxed">{service.description}</p>
+                  <p 
+                    className={`text-sm leading-relaxed dark:text-[#FFFFFF]/70 ${
+                      isRTL ? 'text-right' : 'text-left'
+                    }`}
+                  >
+                    {t(service.descriptionKey)}
+                  </p>
                 </div>
               </div>
             )

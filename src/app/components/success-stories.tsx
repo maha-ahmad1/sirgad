@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
@@ -52,6 +52,16 @@ export default function SuccessStories() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const totalSlides = Math.ceil(projects.length / 3);
 
+  // Detect language direction
+  const [isRTL, setIsRTL] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const dir = document.documentElement.dir;
+      setIsRTL(dir === "rtl");
+    }
+  }, []);
+
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % totalSlides);
   };
@@ -70,16 +80,31 @@ export default function SuccessStories() {
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Success <span className="text-[#00A8E8]">Stories</span> 🎉
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 dark:text-white">
+            {isRTL ? (
+              <>
+                قصص <span className="text-[#00A8E8]">نجاح</span> 🎉
+              </>
+            ) : (
+              <>
+                Success <span className="text-[#00A8E8]">Stories</span> 🎉
+              </>
+            )}
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            Transformative solutions delivering measurable results
+
+          <p className="text-gray-600 max-w-2xl mx-auto dark:text-[#FFFFFF99]/70">
+            {isRTL
+              ? "حلول مبتكرة تقدم نتائج ملموسة"
+              : "Transformative solutions delivering measurable results"}
           </p>
         </div>
 
         {/* Project Cards */}
-        <div className="grid md:grid-cols-3 gap-6 mb-8 max-w-6xl mx-auto">
+        <div
+          className={`grid md:grid-cols-3 gap-6 mb-8 max-w-6xl mx-auto ${
+            isRTL ? "direction-rtl" : ""
+          }`}
+        >
           {currentProjects.map((project) => (
             <div
               key={project.id}
@@ -107,22 +132,22 @@ export default function SuccessStories() {
                     />
                   </div>
                 </div>
-
-                {/* <div className="w-full h-48  relative ">
-                  <Image
-                    src={project.image || "/placeholder.svg"}
-                    alt={`${project.name} ${project.subtitle}`}
-                    fill
-                    className="object-cover bject-bottom"
-                  />
-                </div> */}
               </div>
 
               {/* Project Details */}
               <div className="p-6">
-                <h4 className="text-xl font-bold mb-2">{project.category}</h4>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  {project.description}
+                <h4 className="text-xl font-bold mb-2">
+                  {isRTL ? "تطوير مواقع" : project.category}
+                </h4>
+
+                <p
+                  className={`text-gray-600 text-sm leading-relaxed ${
+                    isRTL ? "text-right" : ""
+                  }`}
+                >
+                  {isRTL
+                    ? "مواقع سريعة وآمنة مبنية بأحدث التقنيات وبأسلوب متوافق مع الهواتف."
+                    : project.description}
                 </p>
               </div>
             </div>
@@ -130,20 +155,26 @@ export default function SuccessStories() {
         </div>
 
         {/* Navigation */}
-        <div className="flex justify-end gap-2 pr-10">
+        <div
+          className={`
+    flex gap-2 
+    ${isRTL ? "justify-start pl-10 flex-row-reverse" : "justify-end pr-10"}
+  `}
+        >
           <Button
             variant="ghost"
             size="icon"
             onClick={prevSlide}
-            className="rounded-full w-10 h-10 border-2 border-[#CDA63D] hover:text-white  hover:bg-[#CDA63D]/90"
+            className="rounded-full w-10 h-10 border-2 border-[#CDA63D] hover:text-white hover:bg-[#CDA63D]/90"
           >
             <ChevronLeft className="w-5 h-5" />
           </Button>
+
           <Button
             variant="ghost"
             size="icon"
             onClick={nextSlide}
-            className="rounded-full  w-10 h-10 bg-[#CDA63D] hover:bg-[#CDA63D]/90 hover:text-white border-0"
+            className="rounded-full w-10 h-10 bg-[#CDA63D] hover:bg-[#CDA63D]/90 hover:text-white border-0"
           >
             <ChevronRight className="w-5 h-5" />
           </Button>
