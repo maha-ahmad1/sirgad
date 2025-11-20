@@ -10,12 +10,10 @@ export function Hero() {
   const t = useTranslations('hero');
   
   return (
-    <section className=" relative min-h-screen flex flex-col overflow-hidden " id="home">
-      <section className="hero-section-container ">
-      <div className="absolute inset-0 -z-10 overflow-hidden hero-background-absolute">
+    <section className=" relative min-h-screen flex flex-col overflow-hidden hero-section-container " id="home">
+      <div className="hero-background-absolute">
         <NetworkBackground />
       </div>
-      </section>
       <DotGrid />
       <div className="absolute -top-10 left-0 ltr:left-0 rtl:right-0 -z-10 pointer-events-none sm:hidden lg:block lg:w-[60vw] lg:max-w-[1000px] lg:h-auto">
         <Image

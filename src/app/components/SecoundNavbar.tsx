@@ -64,7 +64,7 @@ export const SecoundNavbar = () => {
 
       {/* Header */}
       <header
-        className={`fixed dark:bg-[#2D2D304D]/30 z-50 w-full transition-all duration-300 px-4 sm:px-6 lg:px-18 flex items-center justify-center bg-background/50 backdrop-blur supports-[backdrop-filter]:bg-background/50 border-b border-border/40 ${
+        className={` fixed dark:bg-[#2D2D304D]/30 z-50 w-full transition-all duration-300 px-4 sm:px-6 lg:px-18 flex items-center justify-center bg-background/50 backdrop-blur supports-[backdrop-filter]:bg-background/50 border-b border-border/40 ${
           isScrolled
             ? "bg-background/95 backdrop-blur-md shadow-lg  top-0 left-0 right-0 py-6"
             : "bg-transparent py-6 top-10 left-0 right-0"

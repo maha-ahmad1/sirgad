@@ -107,20 +107,16 @@ export default function PartnersSection() {
                   <div className="relative z-10 mt-8 sm:mt-0">
                     <p className="font-work-sans text-2xl sm:text-3xl lg:text-responsive-4xl font-bold mb-12 sm:mb-16 lg:mb-20 tracking-wider uppercase">
                       <span className="bg-gradient-to-r from-[rgba(0,138,171,1)] to-[rgba(203,178,100,1)] bg-clip-text text-transparent">
-                        {/* BACKED By LEADING PARTNERS */}
                         {t("backedBy")}
                       </span>
                     </p>
 
                     <h2 className="w-full dark:text-white font-work-sans text-2xl sm:text-3xl lg:text-4xl xl:text-5xl 2xl:text-responsive-6xl font-bold text-gray-900 leading-tight">
-                      {/* We proudly collaborate with local and global organizations
-                      to empower{" "} */}
                       {t("title1")}
                     </h2>
                     <h2 className="font-work-sans text-2xl sm:text-3xl lg:text-4xl xl:text-5xl 2xl:text-responsive-6xl font-bold">
                       <span className="inline-block mt-4 sm:mt-6">
                         <span className="bg-[#008AAB] text-white px-3 sm:px-4 py-1 sm:py-2 ">
-                          {/* the next generation of */}
                           {t("title2")}
                         </span>
                       </span>{" "}
@@ -303,11 +299,11 @@ export default function PartnersSection() {
                     />
                   </div>
 
-                  {/* Orbiting Partner Logos */}
+                  {/* Orbiting Partner Logos - معدلة للشاشات الصغيرة */}
                   {partners.map((partner, index) => {
                     const angle =
                       (index / partners.length) * 2 * Math.PI - Math.PI / 2;
-                    const radius = clamp(160, 180, 220); // responsive radius
+                    const radius = getResponsiveRadius(); // استخدام الدالة الجديدة
                     const x = Math.cos(angle) * radius;
                     const y = Math.sin(angle) * radius;
                     const isHovered = hoveredIndex === index;
@@ -321,17 +317,15 @@ export default function PartnersSection() {
                             isHovered ? 1.1 : 1
                           })`,
                         }}
-                        // onMouseEnter={() => setHoveredIndex(index)}
-                        // onMouseLeave={() => setHoveredIndex(null)}
                       >
-                        <div className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 rounded-full p-[4px] sm:p-[6px] shadow-xl transition-transform duration-500 flex items-center justify-center animated-gradient-rotate">
+                        <div className="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 rounded-full p-[3px] sm:p-[4px] lg:p-[6px] shadow-xl transition-transform duration-500 flex items-center justify-center animated-gradient-rotate">
                           <div className="w-full h-full rounded-full bg-white flex items-center justify-center">
                             <Image
                               src={partner.logo || "/placeholder.svg"}
                               alt={partner.name}
                               width={56}
                               height={56}
-                              className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 object-contain"
+                              className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 object-contain"
                             />
                           </div>
                         </div>
@@ -359,12 +353,28 @@ export default function PartnersSection() {
   );
 }
 
-// Helper function for responsive values
+// الدالة المحسنة للـ radius
+function getResponsiveRadius(): number {
+  if (typeof window === "undefined") return 140;
+
+  const width = window.innerWidth;
+  
+  if (width < 480) return 80;     // شاشات صغيرة جداً
+  if (width < 640) return 100;    // موبايل صغير
+  if (width < 768) return 120;    // موبايل
+  if (width < 1024) return 140;   // تابلت
+  if (width < 1280) return 160;   // لابتوب صغير
+  return 180;                     // شاشات كبيرة
+}
+
+// أو استخدم هذه الدالة البديلة إذا كنت تريد الحفاظ على الدالة الأصلية
 function clamp(min: number, mid: number, max: number): number {
   if (typeof window === "undefined") return mid;
 
   const width = window.innerWidth;
-  if (width < 768) return min;
-  if (width < 1024) return mid;
-  return max;
+  if (width < 480) return min * 0.5;   // شاشات صغيرة جداً
+  if (width < 640) return min * 0.7;   // موبايل صغير
+  if (width < 768) return min * 0.8;   // موبايل
+  if (width < 1024) return mid;        // تابلت
+  return max;                          // شاشات كبيرة
 }

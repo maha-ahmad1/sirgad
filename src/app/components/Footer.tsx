@@ -16,6 +16,7 @@ import { useState, useEffect } from "react";
 import { useTranslations, useLocale } from "next-intl";
 
 export default function FooterSection() {
+  const [email, setEmail] = useState("");
   const t = useTranslations("footer");
   const locale = useLocale();
   const isRTL = locale === "ar";
@@ -23,6 +24,9 @@ export default function FooterSection() {
   const [showScroll, setShowScroll] = useState(false);
   const [isDark, setIsDark] = useState(false);
 
+
+
+  
   useEffect(() => {
     const handleScroll = () => {
       setShowScroll(window.scrollY > 300);

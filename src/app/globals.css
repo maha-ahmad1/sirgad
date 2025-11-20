@@ -329,11 +329,13 @@ main > *:not(:first-child) canvas {
 }
 
 /* Alternative strong containment */
-.hero-section-container {
-  position: relative;
-  overflow: hidden;
-  
-}
+ .hero-section-container {
+    min-height: 100svh;
+    height: auto;
+    position: relative;
+    overflow: hidden;
+    contain: layout paint style;
+  }
 
 /* Robust background containment helper used by hero component */
 .hero-background-absolute {
