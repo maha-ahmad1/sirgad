@@ -24,7 +24,7 @@ export default function PartnersSection() {
   const radii = [70, 130, 190, 250];
 
   return (
-    <section className="relative w-full ">
+    <section className="relative w-full  ">
       {/* Gradient Background */}
       <div
         className="absolute inset-0 dark:hidden"
@@ -39,7 +39,6 @@ export default function PartnersSection() {
         }}
       />
 
-      {/* للتدرج في الدارك مود - مع تدرج خفيف من نفس اللون */}
       <div
         className="absolute inset-0 hidden dark:block"
         style={{
@@ -353,28 +352,26 @@ export default function PartnersSection() {
   );
 }
 
-// الدالة المحسنة للـ radius
 function getResponsiveRadius(): number {
   if (typeof window === "undefined") return 140;
 
   const width = window.innerWidth;
   
-  if (width < 480) return 80;     // شاشات صغيرة جداً
-  if (width < 640) return 100;    // موبايل صغير
-  if (width < 768) return 120;    // موبايل
-  if (width < 1024) return 140;   // تابلت
-  if (width < 1280) return 160;   // لابتوب صغير
-  return 180;                     // شاشات كبيرة
+  if (width < 480) return 80;     
+  if (width < 640) return 100;    
+  if (width < 768) return 120;   
+  if (width < 1024) return 140;   
+  if (width < 1280) return 160;   
+  return 180;                       
 }
 
-// أو استخدم هذه الدالة البديلة إذا كنت تريد الحفاظ على الدالة الأصلية
 function clamp(min: number, mid: number, max: number): number {
   if (typeof window === "undefined") return mid;
 
   const width = window.innerWidth;
-  if (width < 480) return min * 0.5;   // شاشات صغيرة جداً
-  if (width < 640) return min * 0.7;   // موبايل صغير
-  if (width < 768) return min * 0.8;   // موبايل
-  if (width < 1024) return mid;        // تابلت
-  return max;                          // شاشات كبيرة
+  if (width < 480) return min * 0.5;   
+  if (width < 640) return min * 0.7;  
+  if (width < 768) return min * 0.8;  
+  if (width < 1024) return mid;        
+  return max;                          
 }

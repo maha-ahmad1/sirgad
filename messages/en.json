@@ -115,7 +115,10 @@
     "phone": "+212 535 943 297",
     "rights": "© SIRGAD 2025. All rights reserved.",
     "heroFooter": "Driving business growth ",
-    "hero": "with innovative digital solutions"
+    "hero": "with innovative digital solutions",
+    "sending": "Sending...",
+    "subscriptionSuccess": "Successfully subscribed to newsletter!",
+    "subscriptionError": "Subscription failed, please try again"
   },
  
   "PartnerForm": {
@@ -142,6 +145,9 @@
     "message": "Message",
     "message_placeholder": "Type your message here...",
 
-    "send_message": "Send Message"
+    "send_message": "Send Message",
+    "successMessage": "Message sent successfully!",
+    "errorMessage": "An error occurred while sending",
+    "sending": "Sending..."
   }
 }

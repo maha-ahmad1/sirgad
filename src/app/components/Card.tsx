@@ -5,7 +5,6 @@ import Image from "next/image";
 export default function Card() {
   return (
     <section className=" container mx-auto px-4 relative z-10  w-full h-[600px] md:h-[500px] overflow-hidden mt-40">
-      {/* الخلفية */}
       <Image
         src="/card1.jpg"
         alt="Partner background"

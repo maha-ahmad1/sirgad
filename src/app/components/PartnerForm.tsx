@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
 import emailjs from "@emailjs/browser";
 import { useRef, useState } from "react";
+import { toast } from "sonner";
 
 export default function PartnerForm() {
   const t = useTranslations("PartnerForm");
@@ -26,12 +27,18 @@ export default function PartnerForm() {
       )
       .then(
         () => {
-          // alert("تم إرسال الرسالة بنجاح!");
+          toast.success(t("successMessage") || "تم إرسال الرسالة بنجاح!", {
+            description: "سنقوم بالرد عليك في أقرب وقت ممكن",
+            duration: 5000,
+          });
           formRef.current?.reset();
           setLoading(false);
         },
         (error) => {
-          alert("حدث خطأ أثناء الإرسال: " );
+          toast.error(t("errorMessage") || "حدث خطأ أثناء الإرسال", {
+            description: "يرجى المحاولة مرة أخرى",
+            duration: 5000,
+          });
           setLoading(false);
         }
       );
@@ -99,33 +106,68 @@ export default function PartnerForm() {
               }`}
             >
               <div className="grid grid-cols-2 sm:grid-cols-2 gap-4">
-                {/* First Name */}
-                <div className="flex flex-col">
-                  <label className="mb-1 font-normal font-work-sans text-md dark:text-white text-[#222222]">
-                    {t("first_name")}
-                  </label>
-                  <input
-                    required
-                    name="first_name"
-                    type="text"
-                    placeholder={t("first_name_placeholder")}
-                    className="font-normal dark:text-white dark:bg-[#3E3E4266]/40 font-work-sans text-md p-3 border-[#00AEEF33]/20 rounded-[12px] border bg-white/40 focus:outline-none focus:ring-2 focus:ring-[#009DF0]/40"
-                  />
-                </div>
+                {/* 🔥 عكس الترتيب حسب اللغة */}
+                {locale === "ar" ? (
+                  <>
+                    {/* Last Name أولاً في العربية */}
+                    <div className="flex flex-col">
+                      <label className="mb-1 font-normal font-work-sans text-md dark:text-white text-[#222222]">
+                        {t("last_name")}
+                      </label>
+                      <input
+                        required
+                        name="last_name"
+                        type="text"
+                        placeholder={t("last_name_placeholder")}
+                        className="font-normal dark:text-white dark:bg-[#3E3E4266]/40 font-work-sans text-md p-3 border-[#00AEEF33]/20 rounded-[12px] border bg-white/40 focus:outline-none focus:ring-2 focus:ring-[#009DF0]/40 text-right"
+                      />
+                    </div>
 
-                {/* Last Name */}
-                <div className="flex flex-col">
-                  <label className="mb-1 font-normal font-work-sans text-md dark:text-white text-[#222222]">
-                    {t("last_name")}
-                  </label>
-                  <input
-                    required
-                    name="last_name"
-                    type="text"
-                    placeholder={t("last_name_placeholder")}
-                    className="font-normal dark:text-white dark:bg-[#3E3E4266]/40 font-work-sans text-md p-3 border-[#00AEEF33]/20 rounded-[12px] border bg-white/40 focus:outline-none focus:ring-2 focus:ring-[#009DF0]/40"
-                  />
-                </div>
+                    {/* First Name ثانياً في العربية */}
+                    <div className="flex flex-col">
+                      <label className="mb-1 font-normal font-work-sans text-md dark:text-white text-[#222222]">
+                        {t("first_name")}
+                      </label>
+                      <input
+                        required
+                        name="first_name"
+                        type="text"
+                        placeholder={t("first_name_placeholder")}
+                        className="font-normal dark:text-white dark:bg-[#3E3E4266]/40 font-work-sans text-md p-3 border-[#00AEEF33]/20 rounded-[12px] border bg-white/40 focus:outline-none focus:ring-2 focus:ring-[#009DF0]/40 text-right"
+                      />
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    {/* First Name أولاً في الإنجليزية */}
+                    <div className="flex flex-col">
+                      <label className="mb-1 font-normal font-work-sans text-md dark:text-white text-[#222222]">
+                        {t("first_name")}
+                      </label>
+                      <input
+                        required
+                        name="first_name"
+                        type="text"
+                        placeholder={t("first_name_placeholder")}
+                        className="font-normal dark:text-white dark:bg-[#3E3E4266]/40 font-work-sans text-md p-3 border-[#00AEEF33]/20 rounded-[12px] border bg-white/40 focus:outline-none focus:ring-2 focus:ring-[#009DF0]/40 text-left"
+                      />
+                    </div>
+
+                    {/* Last Name ثانياً في الإنجليزية */}
+                    <div className="flex flex-col">
+                      <label className="mb-1 font-normal font-work-sans text-md dark:text-white text-[#222222]">
+                        {t("last_name")}
+                      </label>
+                      <input
+                        required
+                        name="last_name"
+                        type="text"
+                        placeholder={t("last_name_placeholder")}
+                        className="font-normal dark:text-white dark:bg-[#3E3E4266]/40 font-work-sans text-md p-3 border-[#00AEEF33]/20 rounded-[12px] border bg-white/40 focus:outline-none focus:ring-2 focus:ring-[#009DF0]/40 text-left"
+                      />
+                    </div>
+                  </>
+                )}
               </div>
 
               {/* Email */}
@@ -138,7 +180,9 @@ export default function PartnerForm() {
                   name="email"
                   type="email"
                   placeholder={t("email_placeholder")}
-                  className="w-full font-normal dark:text-white dark:bg-[#3E3E4266]/40 font-work-sans text-md p-3 border-[#00AEEF33]/20 rounded-[12px] border bg-white/40 focus:outline-none focus:ring-2 focus:ring-[#009DF0]/40"
+                  className={`w-full font-normal dark:text-white dark:bg-[#3E3E4266]/40 font-work-sans text-md p-3 border-[#00AEEF33]/20 rounded-[12px] border bg-white/40 focus:outline-none focus:ring-2 focus:ring-[#009DF0]/40 ${
+                    locale === "ar" ? "text-right" : "text-left"
+                  }`}
                 />
               </div>
 
@@ -152,7 +196,9 @@ export default function PartnerForm() {
                   name="subject"
                   type="text"
                   placeholder={t("subject_placeholder")}
-                  className="font-normal font-work-sans dark:text-white dark:bg-[#3E3E4266]/40 text-md p-3 border-[#00AEEF33]/20 rounded-[12px] w-full border bg-white/40 focus:outline-none focus:ring-2 focus:ring-[#009DF0]/40"
+                  className={`font-normal font-work-sans dark:text-white dark:bg-[#3E3E4266]/40 text-md p-3 border-[#00AEEF33]/20 rounded-[12px] w-full border bg-white/40 focus:outline-none focus:ring-2 focus:ring-[#009DF0]/40 ${
+                    locale === "ar" ? "text-right" : "text-left"
+                  }`}
                 />
               </div>
 
@@ -166,7 +212,9 @@ export default function PartnerForm() {
                   name="phone"
                   type="text"
                   placeholder={t("phone_placeholder")}
-                  className="font-normal font-work-sans dark:text-white dark:bg-[#3E3E4266]/40 text-md p-3 border-[#00AEEF33]/20 rounded-[12px] w-full border bg-white/40 focus:outline-none focus:ring-2 focus:ring-[#009DF0]/40"
+                  className={`font-normal font-work-sans dark:text-white dark:bg-[#3E3E4266]/40 text-md p-3 border-[#00AEEF33]/20 rounded-[12px] w-full border bg-white/40 focus:outline-none focus:ring-2 focus:ring-[#009DF0]/40 ${
+                    locale === "ar" ? "text-right" : "text-left"
+                  }`}
                 />
               </div>
 
@@ -178,7 +226,9 @@ export default function PartnerForm() {
                 <textarea
                   name="message"
                   placeholder={t("message_placeholder")}
-                  className="font-normal font-work-sans dark:text-white dark:bg-[#3E3E4266]/40 text-md p-3 border-[#00AEEF33]/20 rounded-[12px] w-full border bg-white/40 focus:outline-none focus:ring-2 focus:ring-[#009DF0]/40"
+                  className={`font-normal font-work-sans dark:text-white dark:bg-[#3E3E4266]/40 text-md p-3 border-[#00AEEF33]/20 rounded-[12px] w-full border bg-white/40 focus:outline-none focus:ring-2 focus:ring-[#009DF0]/40 ${
+                    locale === "ar" ? "text-right" : "text-left"
+                  }`}
                   rows={4}
                 ></textarea>
               </div>
@@ -186,9 +236,10 @@ export default function PartnerForm() {
               {/* Submit */}
               <button
                 type="submit"
-                className="cursor-pointer w-full bg-[#00AEEF] text-white py-3 rounded-xl font-semibold hover:bg-[#0088d3] transition"
+                className="cursor-pointer w-full bg-[#00AEEF] text-white py-3 rounded-xl font-semibold hover:bg-[#0088d3] transition disabled:opacity-50 disabled:cursor-not-allowed"
+                disabled={loading}
               >
-                {loading ? "Send......" : t("send_message")}
+                {loading ? t("sending") || "جاري الإرسال..." : t("send_message")}
               </button>
             </form>
           </div>
