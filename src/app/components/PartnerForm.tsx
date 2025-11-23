@@ -106,10 +106,8 @@ export default function PartnerForm() {
               }`}
             >
               <div className="grid grid-cols-2 sm:grid-cols-2 gap-4">
-                {/* 🔥 عكس الترتيب حسب اللغة */}
                 {locale === "ar" ? (
                   <>
-                    {/* Last Name أولاً في العربية */}
                     <div className="flex flex-col">
                       <label className="mb-1 font-normal font-work-sans text-md dark:text-white text-[#222222]">
                         {t("last_name")}
@@ -123,7 +121,6 @@ export default function PartnerForm() {
                       />
                     </div>
 
-                    {/* First Name ثانياً في العربية */}
                     <div className="flex flex-col">
                       <label className="mb-1 font-normal font-work-sans text-md dark:text-white text-[#222222]">
                         {t("first_name")}
@@ -139,7 +136,6 @@ export default function PartnerForm() {
                   </>
                 ) : (
                   <>
-                    {/* First Name أولاً في الإنجليزية */}
                     <div className="flex flex-col">
                       <label className="mb-1 font-normal font-work-sans text-md dark:text-white text-[#222222]">
                         {t("first_name")}
@@ -153,7 +149,6 @@ export default function PartnerForm() {
                       />
                     </div>
 
-                    {/* Last Name ثانياً في الإنجليزية */}
                     <div className="flex flex-col">
                       <label className="mb-1 font-normal font-work-sans text-md dark:text-white text-[#222222]">
                         {t("last_name")}

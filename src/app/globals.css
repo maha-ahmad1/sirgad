@@ -295,24 +295,6 @@
 }
 
 
-/* Network Background Containment */
-/* #tsparticles-hero {
-  position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-  z-index: -1 !important;
-} */
-
-/* Ensure the hero section contains the particles */
-/* section.relative.min-h-screen {
-  position: relative;
-  overflow: hidden;
-  isolation: isolate; 
-} */
-
-/* Force particles to be contained within hero section */
 .absolute.inset-0.-z-10.overflow-hidden {
   position: absolute !important;
   top: 0 !important;
@@ -328,7 +310,6 @@ main > *:not(:first-child) canvas {
   display: none !important;
 }
 
-/* Alternative strong containment */
  .hero-section-container {
     min-height: 100svh;
     height: auto;
@@ -337,7 +318,6 @@ main > *:not(:first-child) canvas {
     contain: layout paint style;
   }
 
-/* Robust background containment helper used by hero component */
 .hero-background-absolute {
   position: absolute !important;
   top: 0 !important;
@@ -350,19 +330,4 @@ main > *:not(:first-child) canvas {
 
 
 
-/* .hero {
-  min-height: 100svh;
-  height: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-block: clamp(3rem, 8vh, 7rem);
-}
-.hero-image {
-  max-height: 50vh;
-  object-fit: cover;
-  width: 100%;
-  border-radius: 24px;
-}
 
- */

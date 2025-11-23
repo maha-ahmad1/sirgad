@@ -298,11 +298,10 @@ export default function PartnersSection() {
                     />
                   </div>
 
-                  {/* Orbiting Partner Logos - معدلة للشاشات الصغيرة */}
                   {partners.map((partner, index) => {
                     const angle =
                       (index / partners.length) * 2 * Math.PI - Math.PI / 2;
-                    const radius = getResponsiveRadius(); // استخدام الدالة الجديدة
+                    const radius = getResponsiveRadius(); 
                     const x = Math.cos(angle) * radius;
                     const y = Math.sin(angle) * radius;
                     const isHovered = hoveredIndex === index;

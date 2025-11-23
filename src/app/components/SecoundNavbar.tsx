@@ -165,20 +165,7 @@ export const SecoundNavbar = () => {
 
           {/* Bottom Section */}
           <div className="pt-6 border-t border-gray-200 dark:border-gray-700 space-y-4">
-            {/* Theme Toggle */}
-            {/* <div className="flex items-center justify-between py-3 px-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
-              <span className="text-sm font-medium">Theme</span>
-              <ThemeToggle />
-            </div> */}
-
-            {/* Language Selector */}
-            {/* <div className="flex items-center justify-between py-3 px-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
-              <span className="text-sm font-medium">Language</span>
-              <button className="cursor-pointer flex items-center gap-2 text-sm hover:text-cyan-500 transition-colors">
-                <span>🌐</span>
-                <span>English</span>
-              </button>
-            </div> */}
+           
 
             {/* Contact Button */}
             <Button

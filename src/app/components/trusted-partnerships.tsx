@@ -96,13 +96,7 @@ export default function TrustedPartnerships() {
                 className="relative min-w-[80%] md:min-w-[65%] p-[2px] rounded-2xl mx-2 shadow-sm hover:shadow-md transition-all bg-gradient-to-b from-[rgba(0,174,239,1)] to-[rgba(0,104,169,1)]"
               >
                 <div className="bg-[#D6F2FB] dark:bg-[#1A2B3C] rounded-2xl p-6 h-full relative border-2 border-transparent">
-                  {/* <div
-                    className={`absolute ${
-                      isRTL ? "left-6" : "right-6"
-                    } -top-6 w-12 h-12 rounded-full bg-[#00A8E8] flex items-center justify-center shadow-md z-20`}
-                  >
-                    <Quote className="w-6 h-6 text-white fill-white" />
-                  </div> */}
+                 
 
                   <p
                     className={`font-work-sans font-medium text-xl md:text-base dark:text-[#FFFFFF] text-[#222222] mb-4 md:mb-6 leading-relaxed ${

@@ -52,7 +52,6 @@ export default function SuccessStories() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const totalSlides = Math.ceil(projects.length / 3);
 
-  // Detect language direction
   const [isRTL, setIsRTL] = useState(false);
 
   useEffect(() => {

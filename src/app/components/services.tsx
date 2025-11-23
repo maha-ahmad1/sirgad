@@ -40,7 +40,7 @@ export function Services() {
                     className="w-full h-full" 
                     viewBox="0 0 100 100" 
                     preserveAspectRatio="xMinYMin meet"
-                    style={{ direction: 'ltr' }} // الحفاظ على اتجاه الأرقام LTR دائمًا
+                    style={{ direction: 'ltr' }} 
                   >
                     <defs>
                       <linearGradient 
@@ -55,14 +55,14 @@ export function Services() {
                       </linearGradient>
                     </defs>
                     <text
-                      x={isRTL ? "120" : "0"} // تعديل الموضع حسب الاتجاه
+                      x={isRTL ? "120" : "0"} 
                       y="80"
                       fill={`url(#fadeGradient${service.number})`}
                       fontSize="100"
                       fontWeight="bold"
                       fontFamily="system-ui, -apple-system, sans-serif"
-                      textAnchor={isRTL ? "end" : "start"} // محاذاة النص
-                      direction="ltr" // إجبار الاتجاه LTR للأرقام
+                      textAnchor={isRTL ? "end" : "start"} 
+                      direction="ltr" 
                     >
                       {service.number}
                     </text>

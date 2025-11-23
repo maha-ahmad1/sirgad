@@ -5,10 +5,6 @@ import {
   Mail,
   MapPin,
   Phone,
-  Facebook,
-  Linkedin,
-  Instagram,
-  Twitter,
   ArrowUp,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -73,7 +69,7 @@ export default function FooterSection() {
 
       if (result.status === 200) {
         toast.success(t("subscriptionSuccess") || "تم الاشتراك بنجاح!");
-        setEmail(""); // مسح الحقل بعد النجاح
+        setEmail(""); 
       } else {
         toast.error(t("subscriptionError") || "حدث خطأ أثناء الاشتراك");
       }
@@ -115,7 +111,6 @@ export default function FooterSection() {
           </div>
         </div>
 
-        {/* 🔥 فورم الديسكتوب - محدث مع EmailJS */}
         <div
           className={`hidden sm:block footer-1024px absolute ${
             isRTL
@@ -161,7 +156,6 @@ export default function FooterSection() {
         </div>
       </div>
 
-      {/* 🔥 فورم الموبايل - محدث مع EmailJS */}
       <div className="block sm:hidden absolute left-1/2 -translate-x-1/2 top-20 z-30 w-[70%] rounded-xl bg-[#FFFFFFD1]/90 backdrop-blur-md shadow-xl border border-white/40 p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
         <form onSubmit={handleNewsletterSubmit}>
           <h3 className="text-center font-semibold text-gray-800 mb-3">
@@ -256,22 +250,6 @@ export default function FooterSection() {
           <p className="font-work-sans dark:text-[#FFFFFF] text-[#222222] font-medium text-sm sm:text-base lg:text-xl mb-6 max-w-lg mx-auto md:mx-0">
             {t("description")}
           </p>
-          {/* <div
-            className={`flex md:justify-start  justify-center gap-2 sm:gap-3`}
-          >
-            <div className="cursor-pointer p-3 rounded-full bg-[#EAB308] hover:bg-[#EAB308]/90">
-              <Facebook className="text-white w-4 h-4 fill-current" />
-            </div>
-            <div className="cursor-pointer p-3 rounded-full bg-[#EAB308] hover:bg-[#EAB308]/90">
-              <Instagram className="text-white w-4 h-4" />
-            </div>
-            <div className="cursor-pointer p-3 rounded-full bg-[#EAB308] hover:bg-[#EAB308]/90">
-              <Linkedin className="text-white w-4 h-4 fill-current" />
-            </div>
-            <div className="cursor-pointer p-3 rounded-full bg-[#EAB308] hover:bg-[#EAB308]/90">
-              <Twitter className="text-white w-4 h-4 fill-current" />
-            </div>
-          </div> */}
         </div>
 
         <div
@@ -310,7 +288,6 @@ export default function FooterSection() {
               )}
             </li>
 
-            {/* البريد الإلكتروني */}
             <li
               className={`flex items-center gap-2 sm:gap-3 ${
                 isRTL
@@ -335,7 +312,6 @@ export default function FooterSection() {
               )}
             </li>
 
-            {/* الهاتف */}
             <li
               className={`flex items-center gap-2 sm:gap-3 ${
                 isRTL
@@ -382,7 +358,6 @@ export default function FooterSection() {
         )}
       </div>
 
-      {/* الحقوق */}
       <div className="text-center z-10 pb-6 text-sm sm:text-xl text-[#222222] dark:text-[#FFFFFF] font-medium">
         <p className="-mt-10">{t("rights")}</p>
       </div>
