@@ -7,14 +7,9 @@ import Image from "next/image";
 import PartnerForm from "./PartnerForm";
 import Footer from "./Footer";
 import { useLocale, useTranslations } from "next-intl";
+import { partners } from "../constants/partners";
 
-const partners = [
-  { name: "Partner 1", logo: "/partners/partners1.png", position: 0 },
-  { name: "Partner 2", logo: "/partners/partners2.png", position: 1 },
-  { name: "Partner 3", logo: "/partners/partners3.png", position: 2 },
-  { name: "Partner 5", logo: "/partners/partners5.png", position: 4 },
-  { name: "Partner 6", logo: "/partners/partners6.png", position: 5 },
-];
+
 
 export default function PartnersSection() {
   const locale = useLocale();

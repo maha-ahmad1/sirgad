@@ -6,47 +6,10 @@ import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
-import Link from "next/link";
+import { services } from "../constants/services";
 
 
-const services = [
-  {
-    id: 1,
-    title: "webDevelopment",
-    description: "webDevelopmentDescription",
-    image: "/image1.png",
-  },
-  {
-    id: 2,
-    title: "mobileApp",
-    description: "mobileAppDescription", 
-    image: "/image2.png",
-  },
-  {
-    id: 3,
-    title: "customSoftware",
-    description: "customSoftwareDescription",
-    image: "/image3.png",
-  },
-  {
-    id: 4,
-    title: "cloudSolutions", 
-    description: "cloudSolutionsDescription",
-    image: "/image3.png",
-  },
-  {
-    id: 5,
-    title: "uiUxDesign",
-    description: "uiUxDesignDescription",
-    image: "/image2.png",
-  },
-  {
-    id: 6,
-    title: "digitalMarketing",
-    description: "digitalMarketingDescription",
-    image: "/image3.png",
-  },
-];
+
 
 export default function CoreSolutionsCarousel() {
   const [currentSlide, setCurrentSlide] = useState(0);

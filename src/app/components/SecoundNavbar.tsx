@@ -4,7 +4,6 @@ import React, { useState, useEffect } from "react";
 import { Phone, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import { ThemeToggle } from "./theme-toggle";
 import { useTranslations, useLocale } from "next-intl";
 import Link from "next/link";
 
